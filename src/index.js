@@ -1,7 +1,3 @@
-console.log('test')
-console.log('application react')
-console.log('sdkjffgsdkjfsdgkfjsdgfsd')
+import { bonjour } from './exos/revision'
 
-if (true) {
-  console.log('sdsjdfsdkfsh')
-}
+console.log(bonjour('John'))
