@@ -118,3 +118,8 @@ export const calculateAverage = notes =>
  * notes : 12/20, 13/20, 18/20, 09/20, 08/20, 15/20
  * moyenne : 12,5/20
  */
+export const displayStudent = ({ firstname, lastname, age, notes }) => `
+  ${displayStudentName({ firstname, lastname, age })}
+  notes : ${displayNotes(notes)}
+  moyenne : ${calculateAverage(notes)} / 20
+`
