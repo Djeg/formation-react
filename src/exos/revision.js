@@ -21,6 +21,7 @@ export function bonjour(name) {
  * Exporter la fonction et importer puis tester
  * dans le fichier `index.js`
  */
+export const bonjour2 = name => bonjour(name)
 
 /**
  * Exo 3
