@@ -51,7 +51,7 @@ export const displayStudentName = ({
 /**
  * Exo 4
  *
- * Toujours avec les variable plus créez une fonction
+ * Toujours avec la variable plus haut, créer une fonction
  * "displayNotes" qui retourne la chaine de character
  * suivante :
  *
@@ -64,6 +64,22 @@ export const displayStudentName = ({
  * Exporter la fonction et importer puis tester
  * dans le fichier `index.js`
  */
+export function displayNotesClassique(notes) {
+  let formatedNotes = []
+
+  for (let note of notes) {
+    if (note < 10) {
+      formatedNotes.push(`0${note}/20`)
+    } else {
+      formatedNotes.push(`${note}/20`)
+    }
+  }
+
+  return formatedNotes.join(', ')
+}
+
+export const displayNotes = notes =>
+  notes.map(note => (note < 10 ? `0${note}/20` : `${note}/20`)).join(', ')
 
 /**
  * Exo 5
@@ -78,6 +94,18 @@ export const displayStudentName = ({
  * Exporter la fonction et importer puis tester
  * dans le fichier `index.js`
  */
+export function calculateAverageClassique(notes) {
+  let total = 0
+
+  for (let note of notes) {
+    total += note
+  }
+
+  return total / notes.length
+}
+
+export const calculateAverage = notes =>
+  notes.reduce((accumulator, note) => accumulator + note, 0) / notes.length
 
 /**
  * Exo 6
