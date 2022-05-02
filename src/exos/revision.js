@@ -42,6 +42,12 @@ export const student = {
   notes: [12, 13, 18, 9, 8, 15],
 }
 
+export const displayStudentName = ({
+  firstname = 'Inconnue',
+  lastname = 'Inconnue',
+  age = 'Inconnue',
+} = {}) => `Élève ${firstname} ${lastname}, ${age} ans`
+
 /**
  * Exo 4
  *
