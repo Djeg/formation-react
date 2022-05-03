@@ -1,19 +1,13 @@
-import {
-  bonjour,
-  bonjour2,
-  displayNotes,
-  displayNotesClassique,
-  displayStudentName,
-  student,
-  calculateAverageClassique,
-  calculateAverage,
-  displayStudent,
-} from './exos/revision'
+import React from 'react'
+import { render } from 'react-dom'
 
-console.log(bonjour('John'))
-console.log(bonjour2('john'))
-console.log(displayStudentName(student))
-console.log(displayNotesClassique(student.notes))
-console.log(calculateAverage(student.notes))
-console.log(calculateAverageClassique(student.notes))
-console.log(displayStudent(student))
+const html = (
+  <div>
+    <h1>Bonjour</h1>
+    <p>Bienvenue sur l'application</p>
+  </div>
+)
+
+const div = document.querySelector('#root')
+
+render(html, div)
