@@ -7,8 +7,8 @@ const html = (
   <div>
     <h1>Vos notes</h1>
     <ul>
-      {notes.map(note => (
-        <li>{note} / 20</li>
+      {notes.map((note, index) => (
+        <li key={`note-${index}`}>{note} / 20</li>
       ))}
     </ul>
   </div>
