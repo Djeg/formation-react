@@ -1,11 +1,11 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-function Hello(props) {
+function Hello({ name, age }) {
   return (
     <div>
-      <h1>Bonjour {props.name}</h1>
-      <p>Vous avez {props.age} ans</p>
+      <h1>Bonjour {name}</h1>
+      <p>Vous avez {age} ans</p>
     </div>
   )
 }
@@ -13,6 +13,9 @@ function Hello(props) {
 const html = (
   <div>
     <Hello name="John" age={34} />
+    <Hello name="Jane" age={12} />
+    <Hello name="Rose" age={21} />
+    <Hello name="Jack" age={42} />
   </div>
 )
 
