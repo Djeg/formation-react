@@ -1,21 +1,22 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-function Hello({ name, age }) {
+function BigText({ children }) {
   return (
     <div>
-      <h1>Bonjour {name}</h1>
-      <p>Vous avez {age} ans</p>
+      <p>Voici un big text :</p>
+      <h1>{children}</h1>
     </div>
   )
 }
 
 const html = (
   <div>
-    <Hello name="John" age={34} />
-    <Hello name="Jane" age={12} />
-    <Hello name="Rose" age={21} />
-    <Hello name="Jack" age={42} />
+    <BigText>
+      Bonjour
+      <br />
+      <span>Comment allez vous ?</span>
+    </BigText>
   </div>
 )
 
