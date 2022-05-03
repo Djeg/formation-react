@@ -1,0 +1,14 @@
+/*
+Fichier css principal,
+permet de styliser les balises
+*/
+html, body {
+  margin: 0;
+  padding: 0;
+}
+body, #root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+}
