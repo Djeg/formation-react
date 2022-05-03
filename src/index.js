@@ -1,25 +1,15 @@
 import React from 'react'
 import { render } from 'react-dom'
+/**
+ * Créer un composant Hello qui affiche
+ * une h1 avec "Hello {name} !"
+ * 
+ * Ce composant doit être dans son propre fichier
+ * et exporté par défaut
+ * 
+ * Importé le composant dans index.js et l'afficher
+ * dans le render
+ */
 
-function BigText({ children }) {
-  return (
-    <div>
-      <p>Voici un big text :</p>
-      <h1>{children}</h1>
-    </div>
-  )
-}
 
-const html = (
-  <div>
-    <BigText>
-      Bonjour
-      <br />
-      <span>Comment allez vous ?</span>
-    </BigText>
-  </div>
-)
-
-const div = document.querySelector('#root')
-
-render(html, div)
+render(/* Ici, afficher le composant Hello */, div)
