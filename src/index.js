@@ -1,12 +1,16 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-const name = 'John'
+const notes = [12, 15, 8, 16, 9]
 
 const html = (
   <div>
-    <h1>Bonjour {name}</h1>
-    <p>Bienvenue sur l'application</p>
+    <h1>Vos notes</h1>
+    <ul>
+      {notes.map(note => (
+        <li>{note} / 20</li>
+      ))}
+    </ul>
   </div>
 )
 
