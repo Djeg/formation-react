@@ -1,4 +1,6 @@
 .Content {
   background-color: rgb(213, 213, 213);
   flex-grow: 2;
+  padding: .8rem;
+  box-sizing: border-box;
 }
