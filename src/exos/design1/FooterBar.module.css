@@ -1,4 +1,8 @@
 .FooterBar {
   background-color: darkslategrey;
   min-height: 215px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  padding: .6rem;
 }
