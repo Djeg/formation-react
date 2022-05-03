@@ -1,13 +1,18 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-function Hello() {
-  return <h1>Bonjour tout le monde !</h1>
+function Hello(props) {
+  return (
+    <div>
+      <h1>Bonjour {props.name}</h1>
+      <p>Vous avez {props.age} ans</p>
+    </div>
+  )
 }
 
 const html = (
   <div>
-    <Hello />
+    <Hello name="John" age={34} />
   </div>
 )
 
