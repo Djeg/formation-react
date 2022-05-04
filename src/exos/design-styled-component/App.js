@@ -1,4 +1,5 @@
 import React from 'react'
+import { HeaderBar } from './styled'
 
 export default function App() {
   return (
