@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import AppEvent from './example/AppEvent'
+import App from './exos/todo/App'
 import './index.css'
 
-render(<AppEvent />, document.querySelector('#root'))
+render(<App />, document.querySelector('#root'))
