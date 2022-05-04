@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   AddTodoButton,
   InputText,
@@ -9,35 +9,60 @@ import {
 } from './styled'
 
 export default function App() {
+  const [newTodo, setNewTodo] = useState('')
+  const [todoList, setTodoList] = useState([
+    'Faire les courses',
+    'Acheter du pain',
+    'Ranger la cuisine',
+  ])
+
+  const changeNewTodo = ev => {
+    setNewTodo(ev.target.value)
+  }
+
+  const addTodo = () => {
+    setTodoList([newTodo, ...todoList])
+    setNewTodo('')
+  }
+
+  /* Solution en programation Imperative
+  const removeTodo = index => {
+    let newTodoList = []
+
+    for (let i in todoList) {
+      if (i === index) {
+        continue
+      }
+
+      newTodoList.push(todoList[i])
+    }
+
+    setTodoList(newTodoList)
+  }
+  */
+
+  // removeTodo = index => () => setTodoList(todoList.filter((todo, i) => i !== index))
+
+  const removeTodo = index =>
+    setTodoList(todoList.filter((todo, i) => i !== index))
+
   return (
     <>
       <TodoInput>
-        <InputText />
-        <AddTodoButton>
+        <InputText value={newTodo} onChange={changeNewTodo} />
+        <AddTodoButton onClick={addTodo}>
           <i className="fa-solid fa-circle-plus"></i>
         </AddTodoButton>
       </TodoInput>
 
-      <Todo>
-        <TodoLabel>Faire les courses</TodoLabel>
-        <RemoveTodoButton>
-          <i class="fa-solid fa-trash"></i>
-        </RemoveTodoButton>
-      </Todo>
-
-      <Todo done={true}>
-        <TodoLabel>Faire les courses</TodoLabel>
-        <RemoveTodoButton>
-          <i class="fa-solid fa-trash"></i>
-        </RemoveTodoButton>
-      </Todo>
-
-      <Todo>
-        <TodoLabel>Faire les courses</TodoLabel>
-        <RemoveTodoButton>
-          <i class="fa-solid fa-trash"></i>
-        </RemoveTodoButton>
-      </Todo>
+      {todoList.map((todo, index) => (
+        <Todo key={`todo-${index}`}>
+          <TodoLabel>{todo}</TodoLabel>
+          <RemoveTodoButton onClick={() => removeTodo(index)}>
+            <i class="fa-solid fa-trash"></i>
+          </RemoveTodoButton>
+        </Todo>
+      ))}
     </>
   )
 }

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export const TodoInput = styled.div`
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
@@ -30,7 +30,7 @@ export const AddTodoButton = styled.button`
 `
 
 export const Todo = styled(TodoInput)`
-  background-color: #dcdcdc;
+  background-color: ${props => (!props.done ? '#dcdcdc' : '#c8f0c7')};
   transition: all 0.5s;
   transform: ${props => (props.done ? 'scale(.8)' : 'scale(1)')};
 `
