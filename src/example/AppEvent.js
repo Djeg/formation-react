@@ -1,19 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+/**
+ * Ici, en utilisant des event, ainsi que un state,
+ * faire en sorte d'augmenter et de dominuer le conteur
+ */
 
 export default function AppEvent() {
-  const onPlus = () => {
-    console.log('Plus est appuyé')
-  }
-
-  const onMinus = () => {
-    console.log('Moins est appuyé')
-  }
+  // const [counter, setCounter] = useState(0)
 
   return (
     <div>
-      <button onClick={onMinus}>-</button>
-      <p>Conteur : 0</p>
-      <button onClick={onPlus}>+</button>
+      <button>-</button>
+      <p>Conteur : {}</p>
+      <button>+</button>
     </div>
   )
 }
