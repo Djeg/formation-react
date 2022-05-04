@@ -1,0 +1,6 @@
+.FooterMenu {
+  flex-grow: 2;
+  background-color: rgb(59, 91, 91);
+  align-self: stretch;
+  min-height: 100%;
+}

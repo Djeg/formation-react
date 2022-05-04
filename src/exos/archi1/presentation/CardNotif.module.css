@@ -1,0 +1,10 @@
+.CardNotif {
+  background-color: rgba(201, 201, 201, 0.5);
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, .2);
+}
