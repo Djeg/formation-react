@@ -1,5 +1,3 @@
-export const newTodo = 'test 3'
-
 export const todoList = [
   { label: 'test 3', done: false },
   { label: 'test 2', done: true },
@@ -21,6 +19,12 @@ export const todoList = [
  *    done: false
  * }
  */
+export const newTodo = label => {
+  return {
+    label: label,
+    done: false,
+  }
+}
 
 /**
  * 2. Créer une fonction "addTodo" qui prend
@@ -42,6 +46,9 @@ export const todoList = [
  * const b = 'rose'
  * const c = [b, ...a] // ['rose', 'john', 'jack']
  */
+export const addTodo = (todoList, todo) => {
+  return [todo, ...todoList]
+}
 
 /**
  * 3. Créer une fonction "removeTodo" qui prend en paramètre
@@ -63,6 +70,9 @@ export const todoList = [
  * Vous pouvez utiliser la méthode "filter" sur un tableaux :
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
  */
+export const removeTodo = (todoList, index) => {
+  return todoList.filter((todo, i) => i !== index)
+}
 
 /**
  * 4. Créer une fonction "toggleTodo" qui prend 2 paramètres,
@@ -91,3 +101,15 @@ export const todoList = [
  * Vous pouvez utiliser la méthode "map"
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
  */
+export const toggleTodo = (todoList, index) => {
+  return todoList.map((todo, i) => {
+    if (i !== index) {
+      return todo
+    }
+
+    return {
+      ...todo,
+      done: !todo.done,
+    }
+  })
+}
