@@ -9,6 +9,8 @@ import {
 } from './styled'
 
 export default function App() {
+  // State : Ce sont les variables nescessaire
+  // au bon fonction de l'application
   const [newTodo, setNewTodo] = useState('')
   const [todoList, setTodoList] = useState([
     'Faire les courses',
@@ -16,6 +18,8 @@ export default function App() {
     'Ranger la cuisine',
   ])
 
+  // Event : Ce sont les fonctions à lancé
+  // lors des actions (un clique, etc ...)
   const changeNewTodo = ev => {
     setNewTodo(ev.target.value)
   }
