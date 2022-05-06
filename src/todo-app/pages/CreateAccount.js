@@ -1,4 +1,6 @@
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 import React, { useState } from 'react'
+import { auth } from '../firebase'
 
 export default function CreateAccount() {
   const [loading, setLoading] = useState(false)
@@ -10,13 +12,15 @@ export default function CreateAccount() {
   const changePassword = ev => setPassword(ev.target.value)
   const changeRepeatedPassword = ev => setRepeatedPassword(ev.target.value)
 
-  const sendAccount = ev => {
+  const sendAccount = async ev => {
     // Pour annuler le rechargement de page,
     // nous utilisons "preventDefault"
     ev.preventDefault()
     setLoading(true)
 
-    console.log(email, password, repeatedPassword)
+    await createUserWithEmailAndPassword(auth, email, password)
+    console.log('done !')
+    setLoading(false)
   }
 
   return (
