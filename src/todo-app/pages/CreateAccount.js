@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { auth } from '../firebase'
 
 export default function CreateAccount() {
@@ -8,6 +9,7 @@ export default function CreateAccount() {
   const [password, setPassword] = useState('')
   const [repeatedPassword, setRepeatedPassword] = useState('')
   const [error, setError] = useState('')
+  const navigate = useNavigate()
 
   const changeEmail = ev => setEmail(ev.target.value)
   const changePassword = ev => setPassword(ev.target.value)
@@ -28,6 +30,7 @@ export default function CreateAccount() {
       await createUserWithEmailAndPassword(auth, email, password)
 
       setLoading(false)
+      navigate('/connexion')
     } catch (e) {
       setLoading(false)
 
