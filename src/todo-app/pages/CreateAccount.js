@@ -19,6 +19,11 @@ export default function CreateAccount() {
     ev.preventDefault()
     setLoading(true)
 
+    if (password !== repeatedPassword) {
+      setLoading(false)
+      return setError('Les mots de passe doivent correspondre')
+    }
+
     try {
       await createUserWithEmailAndPassword(auth, email, password)
 
