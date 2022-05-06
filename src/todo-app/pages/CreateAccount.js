@@ -25,6 +25,11 @@ export default function CreateAccount() {
       setLoading(false)
     } catch (e) {
       setLoading(false)
+
+      if (e.code === 'auth/weak-password') {
+        return setError('Mot de passe trop court')
+      }
+
       setError(e.message)
     }
   }
