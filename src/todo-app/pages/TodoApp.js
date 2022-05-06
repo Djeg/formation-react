@@ -15,14 +15,22 @@ export default function TodoApp() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Récupération de l'utilisateur connécté
-    const user = JSON.parse(window.localStorage.getItem('user'))
+    const fetchTodos = async () => {
+      // Récupération de l'utilisateur connécté
+      const user = JSON.parse(window.localStorage.getItem('user'))
 
-    if (!user) {
-      navigate('/connexion')
+      if (!user) {
+        navigate('/connexion')
 
-      return
+        return
+      }
+
+      // 1. Véifier si l'utilisateur à dèja une todo list
+      //   -> Si oui, alors on récupére les todos de cette list
+      //   -> Si non, alors on créé une nouvelle todo list
     }
+
+    fetchTodos()
   }, [])
 
   const changeNewLabel = ev => setNewLabel(ev.target.value)
