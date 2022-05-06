@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function CreateAccount() {
+  const [loading, setLoading] = useState(false)
   const sendAccount = ev => {
     // Pour annuler le rechargement de page,
     // nous utilisons "preventDefault"
     ev.preventDefault()
+    setLoading(true)
   }
 
   return (
@@ -22,7 +24,11 @@ export default function CreateAccount() {
           name="password"
           placeholder="Répéter votre mot de passe ..."
         />
-        <button type="submit">S'inscrire</button>
+        {loading ? (
+          <p>Chargement ...</p>
+        ) : (
+          <button type="submit">S'inscrire</button>
+        )}
       </form>
     </>
   )
