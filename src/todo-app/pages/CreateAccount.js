@@ -18,9 +18,15 @@ export default function CreateAccount() {
     ev.preventDefault()
     setLoading(true)
 
-    await createUserWithEmailAndPassword(auth, email, password)
-    console.log('done !')
-    setLoading(false)
+    try {
+      await createUserWithEmailAndPassword(auth, email, password)
+
+      console.log('done !')
+      setLoading(false)
+    } catch (e) {
+      console.log('Erreur !!!!')
+      setLoading(false)
+    }
   }
 
   return (
