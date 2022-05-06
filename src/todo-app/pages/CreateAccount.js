@@ -7,6 +7,7 @@ export default function CreateAccount() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [repeatedPassword, setRepeatedPassword] = useState('')
+  const [error, setError] = useState('')
 
   const changeEmail = ev => setEmail(ev.target.value)
   const changePassword = ev => setPassword(ev.target.value)
@@ -21,17 +22,17 @@ export default function CreateAccount() {
     try {
       await createUserWithEmailAndPassword(auth, email, password)
 
-      console.log('done !')
       setLoading(false)
     } catch (e) {
-      console.log('Erreur !!!!')
       setLoading(false)
+      setError(e.message)
     }
   }
 
   return (
     <>
       <h1>Inscription</h1>
+      {error ? <p>{error}</p> : null}
       <form onSubmit={sendAccount}>
         <input
           type="email"
