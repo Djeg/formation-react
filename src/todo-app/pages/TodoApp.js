@@ -13,7 +13,10 @@ export default function TodoApp() {
   const [todoList, setTodoList] = useState([])
 
   useEffect(() => {
-    console.log('Récupération des données sur firebase')
+    // Récupération de l'utilisateur connécté
+    const user = JSON.parse(window.localStorage.getItem('user'))
+
+    console.log(user)
   }, [])
 
   const changeNewLabel = ev => setNewLabel(ev.target.value)
