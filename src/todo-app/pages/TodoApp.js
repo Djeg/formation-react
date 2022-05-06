@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   AddTodoButton,
   InputText,
@@ -11,6 +11,10 @@ import {
 export default function TodoApp() {
   const [newLabel, setNewLabel] = useState('')
   const [todoList, setTodoList] = useState([])
+
+  useEffect(() => {
+    console.log('Récupération des données sur firebase')
+  }, [])
 
   const changeNewLabel = ev => setNewLabel(ev.target.value)
   const addNewTodo = () => {
@@ -37,7 +41,7 @@ export default function TodoApp() {
       <TodoInput>
         <InputText value={newLabel} onChange={changeNewLabel} />
         <AddTodoButton onClick={addNewTodo}>
-          <i class="fa-solid fa-circle-plus"></i>
+          <i className="fa-solid fa-circle-plus"></i>
         </AddTodoButton>
       </TodoInput>
 
@@ -45,7 +49,7 @@ export default function TodoApp() {
         <Todo done={todo.done} key={`todo-${index}`}>
           <TodoLabel onClick={() => toggleTodo(index)}>{todo.label}</TodoLabel>
           <RemoveTodoButton onClick={() => removeTodo(index)}>
-            <i class="fa-solid fa-trash"></i>
+            <i className="fa-solid fa-trash"></i>
           </RemoveTodoButton>
         </Todo>
       ))}
