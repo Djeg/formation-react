@@ -1,3 +1,4 @@
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -8,6 +9,7 @@ import {
   TodoLabel,
   RemoveTodoButton,
 } from '../styled'
+import { db } from '../firebase'
 
 export default function TodoApp() {
   const [newLabel, setNewLabel] = useState('')
@@ -28,6 +30,15 @@ export default function TodoApp() {
       // 1. Véifier si l'utilisateur à dèja une todo list
       //   -> Si oui, alors on récupére les todos de cette list
       //   -> Si non, alors on créé une nouvelle todo list
+      const q = query(collection(db, 'todo-list'), where('user', '==', user.id))
+
+      const snapshot = await getDocs(q)
+      const [data] = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+
+      setTodoList(data.todos || [])
     }
 
     fetchTodos()
