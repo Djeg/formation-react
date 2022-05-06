@@ -18,7 +18,18 @@ export default function Login() {
     try {
       const credential = await signInWithEmailAndPassword(auth, email, password)
 
-      console.log(credential.user)
+      // On enregistre l'utilisateur dans le localStorage
+      // du navigateur. Comme ça l'utilisateur peut-être récupéré
+      // dans toute l'application et aussi conserver même après
+      // fermeture du navigateur
+      window.localStorage.setItem(
+        'user',
+        JSON.stringify({
+          id: credential.user.uid,
+          email: credential.user.email,
+        }),
+      )
+
       setLoading(false)
     } catch (e) {
       setError(e.message)
