@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   AddTodoButton,
   InputText,
@@ -11,12 +12,17 @@ import {
 export default function TodoApp() {
   const [newLabel, setNewLabel] = useState('')
   const [todoList, setTodoList] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     // Récupération de l'utilisateur connécté
     const user = JSON.parse(window.localStorage.getItem('user'))
 
-    console.log(user)
+    if (!user) {
+      navigate('/connexion')
+
+      return
+    }
   }, [])
 
   const changeNewLabel = ev => setNewLabel(ev.target.value)
