@@ -10,6 +10,8 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './todo-app/App'
 
+// 1. Création d'un élément root.
 const root = createRoot(document.querySelector('#root'))
 
+// 2. Affichage de l'application dans le root
 root.render(<App />)
