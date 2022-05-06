@@ -1,4 +1,13 @@
-import { collection, getDocs, query, where } from 'firebase/firestore'
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  query,
+  setDoc,
+  updateDoc,
+  where,
+} from 'firebase/firestore'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -12,8 +21,10 @@ import {
 import { db } from '../firebase'
 
 export default function TodoApp() {
+  const [loading, setLoading] = useState(true)
   const [newLabel, setNewLabel] = useState('')
   const [todoList, setTodoList] = useState([])
+  const [todoListId, setTodoListId] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -38,11 +49,39 @@ export default function TodoApp() {
         ...doc.data(),
       }))
 
-      setTodoList(data.todos || [])
+      if (!data) {
+        const result = await addDoc(collection(db, 'todo-list'), {
+          user: user.id,
+          todos: [],
+        })
+
+        setTodoListId(result.id)
+        setLoading(false)
+
+        return
+      }
+
+      setTodoListId(data.id)
+      setTodoList(data?.todos || [])
+      setLoading(false)
     }
 
     fetchTodos()
   }, [])
+
+  useEffect(() => {
+    if (!todoListId) {
+      return
+    }
+
+    const updateTodo = async () => {
+      await updateDoc(doc(db, 'todo-list', todoListId), {
+        todos: todoList,
+      })
+    }
+
+    updateTodo()
+  }, [todoList])
 
   const changeNewLabel = ev => setNewLabel(ev.target.value)
   const addNewTodo = () => {
@@ -63,6 +102,10 @@ export default function TodoApp() {
   }
   const removeTodo = index =>
     setTodoList(todoList.filter((todo, i) => i !== index))
+
+  if (loading) {
+    return <p>Chargement des todos ...</p>
+  }
 
   return (
     <>
