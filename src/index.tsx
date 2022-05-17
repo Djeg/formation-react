@@ -35,14 +35,31 @@ type HelloProps = {
 
 function Hello({ name, age = '??' }: HelloProps): JSX.Element {
   return (
-    <p>
+    <p className="test">
       Hello {name}, vous avez {age} ans :)
     </p>
   )
 }
 
+type BigTextProps = {
+  children: React.ReactNode
+}
+
+function BigText({ children }: BigTextProps): JSX.Element {
+  return (
+    <div className="gros-text">
+      <h1>{children}</h1>
+    </div>
+  )
+}
+
 const element: JSX.Element = (
-  <div>
+  <div className="test">
+    <BigText>
+      Coucou !!
+      <br />
+      <span>dkfhsdlkfhsdf</span>
+    </BigText>
     <Hello name="Rose" />
     <Hello name="Jean" age="35" />
     <Hello name="Jack" age="21" />
