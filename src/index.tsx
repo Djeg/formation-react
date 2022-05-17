@@ -47,7 +47,7 @@ type BigTextProps = {
 
 function BigText({ children }: BigTextProps): JSX.Element {
   return (
-    <div className="gros-text">
+    <div className="gros-text2">
       <h1>{children}</h1>
     </div>
   )
