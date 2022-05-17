@@ -1,5 +1,5 @@
 // Import de styled components
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 /**
  * Ce fichier contient l'intégralité de nos composants
@@ -7,9 +7,22 @@ import styled from 'styled-components'
  * en dessous
  */
 
+// Style Globale : Style des balises HTML nue (sans classe)
+export const GlobalStyle = createGlobalStyle`
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  h1 {
+    font-family: 'Lobster', sans-serif;
+  }
+`
+
 // POUR LE FUN
 
 export const MyParagraph = styled.p`
   text-align: center;
-  color: red;
+  color: #725498;
 `

@@ -1,3 +1,4 @@
+import { GlobalStyle } from './shared/ui'
 import TodoList from './todo-list/TodoList'
 
 /**
@@ -7,6 +8,7 @@ import TodoList from './todo-list/TodoList'
 export default function App() {
   return (
     <>
+      <GlobalStyle />
       <TodoList />
     </>
   )
