@@ -1,10 +1,39 @@
+import { useState } from 'react'
 import * as UI from '../shared/ui'
+
+/**
+ * Définie la forme d'un objet Todo
+ */
+export type Todo = {
+  id: string
+  label: string
+  done: boolean
+}
+
+/**
+ * Définie ce qu'est une « task »
+ */
+export type Task = string
+
+/**
+ * Définie ce qu'est une list de « task »
+ */
+export type TaskList = Array<Todo>
 
 /**
  * Ce fichier contient le composant de l'écran
  * de la liste des todos
  */
 export default function TodoList() {
+  const [task, setTask] = useState<Task>('')
+  const [taskList, setTaskList] = useState<TaskList>([])
+
+  console.log('Valeur de task : ' + task)
+
+  const onTaskChange = (event: React.SyntheticEvent<HTMLInputElement>) => {
+    setTask(event.currentTarget.value)
+  }
+
   return (
     <UI.AppContainer>
       <UI.TopNav>
@@ -24,12 +53,24 @@ export default function TodoList() {
 
       <UI.StretchFlexContainer>
         <UI.InputContainer>
-          <UI.Input placeholder="votre todo ..." />
+          <UI.Input placeholder="votre todo ..." onChange={onTaskChange} />
           <UI.InputIcon className="fa-solid fa-circle-plus" />
         </UI.InputContainer>
       </UI.StretchFlexContainer>
 
       <UI.TodoListContainer>
+        <UI.Todo>
+          <UI.TodoLabel>Pommes de terres</UI.TodoLabel>
+          <UI.TodoIcon className="fa-solid fa-trash"></UI.TodoIcon>
+        </UI.Todo>
+        <UI.Todo>
+          <UI.TodoLabel>Pommes de terres</UI.TodoLabel>
+          <UI.TodoIcon className="fa-solid fa-trash"></UI.TodoIcon>
+        </UI.Todo>
+        <UI.Todo>
+          <UI.TodoLabel>Pommes de terres</UI.TodoLabel>
+          <UI.TodoIcon className="fa-solid fa-trash"></UI.TodoIcon>
+        </UI.Todo>
         <UI.Todo>
           <UI.TodoLabel>Pommes de terres</UI.TodoLabel>
           <UI.TodoIcon className="fa-solid fa-trash"></UI.TodoIcon>
