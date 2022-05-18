@@ -45,6 +45,32 @@ export default function TodoList() {
     setTask(event.currentTarget.value)
   }
 
+  const addTaskToList = () => {
+    // Si je n'ai pas de tache (si « task » est vide)
+    if (!task) {
+      // On arrète la fonction ici !
+      return
+    }
+
+    // Création d'un objet Todo à rajouter dans
+    // la liste. Cet objet doit contenir la « task »
+    // dans son label
+    const todo: Todo = {
+      id: `${taskList.length + 1}`,
+      done: false,
+      label: task,
+    }
+
+    // Création d'une nouvelle liste avec tout les éléments
+    // de la liste dèja existant plus notre todo au tout début
+    // de la liste
+    const newList: TaskList = [todo, ...taskList]
+
+    // On met à jour notre liste, React vas donc ré-afficher nos
+    // composants à l'écran
+    setTaskList(newList)
+  }
+
   return (
     <UI.AppContainer>
       <UI.TopNav>
@@ -65,27 +91,24 @@ export default function TodoList() {
       <UI.StretchFlexContainer>
         <UI.InputContainer>
           <UI.Input placeholder="votre todo ..." onChange={onTaskChange} />
-          <UI.InputIcon className="fa-solid fa-circle-plus" />
+          <UI.InputIcon
+            className="fa-solid fa-circle-plus"
+            onClick={addTaskToList}
+          />
         </UI.InputContainer>
       </UI.StretchFlexContainer>
 
       <UI.TodoListContainer>
-        <UI.Todo>
-          <UI.TodoLabel>Pommes de terres</UI.TodoLabel>
-          <UI.TodoIcon className="fa-solid fa-trash"></UI.TodoIcon>
-        </UI.Todo>
-        <UI.Todo>
-          <UI.TodoLabel>Pommes de terres</UI.TodoLabel>
-          <UI.TodoIcon className="fa-solid fa-trash"></UI.TodoIcon>
-        </UI.Todo>
-        <UI.Todo>
-          <UI.TodoLabel>Pommes de terres</UI.TodoLabel>
-          <UI.TodoIcon className="fa-solid fa-trash"></UI.TodoIcon>
-        </UI.Todo>
-        <UI.Todo>
-          <UI.TodoLabel>Pommes de terres</UI.TodoLabel>
-          <UI.TodoIcon className="fa-solid fa-trash"></UI.TodoIcon>
-        </UI.Todo>
+        {taskList.length > 0 ? (
+          taskList.map(todo => (
+            <UI.Todo key={`todo-${todo.id}`}>
+              <UI.TodoLabel>{todo.label}</UI.TodoLabel>
+              <UI.TodoIcon className="fa-solid fa-trash"></UI.TodoIcon>
+            </UI.Todo>
+          ))
+        ) : (
+          <p>Vous n'avez pas encore de taches</p>
+        )}
       </UI.TodoListContainer>
 
       <UI.BottomNav>
