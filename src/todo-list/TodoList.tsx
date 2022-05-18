@@ -23,12 +23,23 @@ export type TaskList = Array<Todo>
 /**
  * Ce fichier contient le composant de l'écran
  * de la liste des todos
+ *
+ * Exercices:
+ *
+ * 1. Afficher le contenu de l'état (state) « taskList »
+ *    dans le JSX du composant en utilisant la méthode « map »
+ *    dans les enfant du composant « UI.TodoListContainer »
+ *
+ *     ° Bonus : Afficher « Il n'y pas encore de taches » si la liste est vide
+ *
+ * 2. Lors du clique (onClick) sur le bouton + (« UI.InputIcon »),
+ *    lancer une fonction "addTaskToList" qui :
+ *    1. Ajoute l'état « task » à l'intérieur de notre tableaux « taskList »
+ *    2. Vider l'état « task » (le rendre égale à une chaine de caractère vide)
  */
 export default function TodoList() {
   const [task, setTask] = useState<Task>('')
   const [taskList, setTaskList] = useState<TaskList>([])
-
-  console.log('Valeur de task : ' + task)
 
   const onTaskChange = (event: React.SyntheticEvent<HTMLInputElement>) => {
     setTask(event.currentTarget.value)
