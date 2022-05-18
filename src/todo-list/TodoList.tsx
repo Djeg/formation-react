@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import uniqid from 'uniqid'
 import * as UI from '../shared/ui'
 
 /**
@@ -74,7 +75,7 @@ export default function TodoList() {
     // la liste. Cet objet doit contenir la « task »
     // dans son label
     const todo: Todo = {
-      id: `${taskList.length + 1}`,
+      id: uniqid(),
       done: false,
       label: task,
     }
@@ -107,7 +108,43 @@ export default function TodoList() {
 
   // Optim 3
   const toggleTodo = (todo: Todo) => () => {
-    console.log('click !!!')
+    console.warn('TOGGLE !')
+    // On boucle sur toute la liste de todo graçe à un map.
+    // On enregistre la nouvelle liste dans une variables :
+    const newList: TaskList = taskList.map(t => {
+      // Ici t contiendra successivement tout les todos
+      // de ma liste
+
+      // Si l'id du todo sur lequel on boucle est différent
+      // du todo que l'on « toggle »
+      if (t.id === todo.id) {
+        // On retourne le todo tel quel
+        return {
+          ...t,
+          done: !t.done,
+        }
+      } else {
+        return t
+      }
+    })
+
+    // Mise à jour de l'état
+    setTaskList(newList)
+  }
+
+  const removeTodo = (todo: Todo) => (e: React.SyntheticEvent<HTMLElement>) => {
+    console.warn('REMOVE !')
+    e.stopPropagation()
+
+    const newList: TaskList = taskList.filter(t => {
+      if (t.id === todo.id) {
+        return false
+      }
+
+      return true
+    })
+
+    setTaskList(newList)
   }
 
   return (
@@ -146,7 +183,10 @@ export default function TodoList() {
               onClick={toggleTodo(todo)}
             >
               <UI.TodoLabel>{todo.label}</UI.TodoLabel>
-              <UI.TodoIcon className="fa-solid fa-trash"></UI.TodoIcon>
+              <UI.TodoIcon
+                className="fa-solid fa-trash"
+                onClick={removeTodo(todo)}
+              ></UI.TodoIcon>
             </UI.Todo>
           ))
         ) : (
