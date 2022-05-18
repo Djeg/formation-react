@@ -36,6 +36,22 @@ export type TaskList = Array<Todo>
  *    lancer une fonction "addTaskToList" qui :
  *    1. Ajoute l'état « task » à l'intérieur de notre tableaux « taskList »
  *    2. Vider l'état « task » (le rendre égale à une chaine de caractère vide)
+ *
+ * ============================
+ *
+ * Exercice 2 :
+ *
+ * 1. Ajouter un fonction « toggleTodo » qui le lance lors du click (onClick)
+ *    du composant « UI.Todo ».
+ *    Dans cette fonction qui reçoi un Todo, faire en sorte de modifier
+ *    la propriété « done » du todo et mettre à jour la liste (faire
+ *    un « map » sur la « taskList »)
+ *
+ * 2. Ajouter une fonction « removeTodo » qui ce lance lors du click (onClick)
+ *    du composant « UI.TodoIcon » .
+ *    Dans cette fonction qui reçoi un Todo, faire en sorte de supprimer
+ *    le todo et mettre à jour la liste (faire
+ *    un « filter » sur la « taskList »)
  */
 export default function TodoList() {
   const [task, setTask] = useState<Task>('')
@@ -101,7 +117,7 @@ export default function TodoList() {
       <UI.TodoListContainer>
         {taskList.length > 0 ? (
           taskList.map(todo => (
-            <UI.Todo key={`todo-${todo.id}`}>
+            <UI.Todo key={`todo-${todo.id}`} done={todo.done}>
               <UI.TodoLabel>{todo.label}</UI.TodoLabel>
               <UI.TodoIcon className="fa-solid fa-trash"></UI.TodoIcon>
             </UI.Todo>

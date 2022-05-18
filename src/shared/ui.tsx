@@ -158,12 +158,20 @@ export const TodoListContainer = styled.section`
   flex-direction: column;
 `
 
-export const Todo = styled.div`
+export type TodoProps = {
+  done?: boolean
+}
+
+export const Todo = styled.div<TodoProps>`
   display: flex;
   padding: 0.6rem 1.2rem;
-  background-color: ${theme.colors.white};
+  background-color: ${props =>
+    props.done ? theme.colors.validGreen : theme.colors.white};
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3) inset;
   align-items: center;
+  transition: all 0.5s;
+  color: ${props =>
+    props.done ? theme.colors.coldWhite : theme.colors.softBlack};
 `
 
 export const TodoLabel = styled.p`
