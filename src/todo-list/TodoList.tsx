@@ -57,10 +57,12 @@ export default function TodoList() {
   const [task, setTask] = useState<Task>('')
   const [taskList, setTaskList] = useState<TaskList>([])
 
+  // onTaskChange :: (React.SyntheticEvent) -> void
   const onTaskChange = (event: React.SyntheticEvent<HTMLInputElement>) => {
     setTask(event.currentTarget.value)
   }
 
+  // addTaskToList :: () -> void
   const addTaskToList = () => {
     // Si je n'ai pas de tache (si « task » est vide)
     if (!task) {
@@ -85,6 +87,27 @@ export default function TodoList() {
     // On met à jour notre liste, React vas donc ré-afficher nos
     // composants à l'écran
     setTaskList(newList)
+  }
+
+  // toggleTodo :: Todo -> React.SyntheticEvent -> Void
+  // onClick :: React.SyntheticEvent -> Void
+  // Optim 1
+  // function toggleTodo(todo: Todo) {
+  //   return function () {
+  //     console.log('click !!!!')
+  //   }
+  // }
+
+  // Optim 2
+  // const toggleTodo = (todo: Todo) => {
+  //   return () => {
+  //     console.log('click !!!!')
+  //   }
+  // }
+
+  // Optim 3
+  const toggleTodo = (todo: Todo) => () => {
+    console.log('click !!!')
   }
 
   return (
@@ -117,7 +140,11 @@ export default function TodoList() {
       <UI.TodoListContainer>
         {taskList.length > 0 ? (
           taskList.map(todo => (
-            <UI.Todo key={`todo-${todo.id}`} done={todo.done}>
+            <UI.Todo
+              key={`todo-${todo.id}`}
+              done={todo.done}
+              onClick={toggleTodo(todo)}
+            >
               <UI.TodoLabel>{todo.label}</UI.TodoLabel>
               <UI.TodoIcon className="fa-solid fa-trash"></UI.TodoIcon>
             </UI.Todo>
