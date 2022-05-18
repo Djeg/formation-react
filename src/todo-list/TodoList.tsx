@@ -108,7 +108,6 @@ export default function TodoList() {
 
   // Optim 3
   const toggleTodo = (todo: Todo) => () => {
-    console.warn('TOGGLE !')
     // On boucle sur toute la liste de todo graçe à un map.
     // On enregistre la nouvelle liste dans une variables :
     const newList: TaskList = taskList.map(t => {
@@ -133,7 +132,6 @@ export default function TodoList() {
   }
 
   const removeTodo = (todo: Todo) => (e: React.SyntheticEvent<HTMLElement>) => {
-    console.warn('REMOVE !')
     e.stopPropagation()
 
     const newList: TaskList = taskList.filter(t => {
