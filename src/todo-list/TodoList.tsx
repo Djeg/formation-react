@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import uniqid from 'uniqid'
+import BottomNav from '../shared/BottomNav'
 import * as UI from '../shared/ui'
 
 /**
@@ -194,22 +195,7 @@ export default function TodoList() {
           <p>Vous n'avez pas encore de taches</p>
         )}
       </UI.TodoListContainer>
-
-      <UI.BottomNav>
-        <UI.BottomNavAction>
-          <UI.BottomNavShare>
-            <i className="fa-solid fa-share"></i>
-          </UI.BottomNavShare>
-          <UI.BottomNavDelete>
-            <i className="fa-solid fa-trash"></i>
-          </UI.BottomNavDelete>
-        </UI.BottomNavAction>
-
-        <UI.BottomNavMenu>
-          <UI.BottomNavItem className="fa-solid fa-bars"></UI.BottomNavItem>
-          <UI.BottomNavItem className="fa-solid fa-user"></UI.BottomNavItem>
-        </UI.BottomNavMenu>
-      </UI.BottomNav>
+      <BottomNav />
     </UI.AppContainer>
   )
 }

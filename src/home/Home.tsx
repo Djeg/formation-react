@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import BottomNav from '../shared/BottomNav'
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <p>
         <Link to="/liste/17532752">La todo liste</Link>
       </p>
+      <BottomNav />
     </>
   )
 }
