@@ -11,8 +11,16 @@ export default function Subscription() {
     (e: React.SyntheticEvent<HTMLInputElement>) =>
       setter(e.currentTarget.value)
 
+  const onSubmit = (e: React.SyntheticEvent<HTMLElement>) => {
+    // Enléve le comportement par défaut du navigateur,
+    // c'est çà dire évite le rafraichissement de la page
+    e.preventDefault()
+
+    console.log('test')
+  }
+
   return (
-    <UI.AppContainer as="form">
+    <UI.AppContainer as="form" onSubmit={onSubmit}>
       <h1>Inscription</h1>
       <UI.InputContainer>
         <UI.Input
