@@ -33,6 +33,8 @@ export default function Subscription() {
       displayName: username,
     })
 
+    localStorage.setItem('user', JSON.stringify(credential.user))
+
     // Redirection vers la page d'accueil :
     navigate('/')
   }
