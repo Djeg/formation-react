@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import uniqid from 'uniqid'
 import * as UI from '../shared/ui'
 
@@ -148,7 +149,9 @@ export default function TodoList() {
   return (
     <UI.AppContainer>
       <UI.TopNav>
-        <UI.TopNavIcon className="fa-solid fa-circle-chevron-left"></UI.TopNavIcon>
+        <Link to="/">
+          <UI.TopNavIcon className="fa-solid fa-circle-chevron-left"></UI.TopNavIcon>
+        </Link>
         <UI.TopNavTitle>Petites Courses</UI.TopNavTitle>
       </UI.TopNav>
 

@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { GlobalStyle } from './shared/ui'
-import Home from './home/Home'
 import TodoList from './todo-list/TodoList'
 import Login from './login/Login'
 import Subscription from './subscription/Subscription'
+import Home from './home/Home'
 
 /**
  * Ce fichier contient le composant principal
