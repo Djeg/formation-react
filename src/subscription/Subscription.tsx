@@ -13,10 +13,11 @@ export default function Subscription() {
 
   const onSubmit = (e: React.SyntheticEvent<HTMLElement>) => {
     // Enléve le comportement par défaut du navigateur,
-    // c'est çà dire évite le rafraichissement de la page
+    // c'est à dire évite le rafraichissement de la page
     e.preventDefault()
 
-    console.log('test')
+    // Envoyer le username , password et email à firebase
+    console.log(username, password, email)
   }
 
   return (
