@@ -1,3 +1,4 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { GlobalStyle } from './shared/ui'
 import TodoList from './todo-list/TodoList'
 
@@ -9,7 +10,13 @@ export default function App() {
   return (
     <>
       <GlobalStyle />
-      <TodoList />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<TodoList />} />
+          <Route path="/test" element={<h1>Test</h1>} />
+          <Route path="/hello" element={<h1>Hello</h1>} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
