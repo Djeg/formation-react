@@ -1,5 +1,7 @@
 import * as UI from '../shared/ui'
 import { useState } from 'react'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../util/firebase'
 
 export default function Subscription() {
   const [username, setUsername] = useState<string>('')
@@ -11,13 +13,18 @@ export default function Subscription() {
     (e: React.SyntheticEvent<HTMLInputElement>) =>
       setter(e.currentTarget.value)
 
-  const onSubmit = (e: React.SyntheticEvent<HTMLElement>) => {
+  const onSubmit = async (e: React.SyntheticEvent<HTMLElement>) => {
     // Enléve le comportement par défaut du navigateur,
     // c'est à dire évite le rafraichissement de la page
     e.preventDefault()
 
-    // Envoyer le username , password et email à firebase
-    console.log(username, password, email)
+    const credential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    )
+
+    console.log(credential)
   }
 
   return (
