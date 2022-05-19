@@ -1,15 +1,38 @@
 import * as UI from '../shared/ui'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../util/firebase'
 import { useNavigate } from 'react-router-dom'
 
 export default function Subscription() {
   const [username, setUsername] = useState<string>('')
+  const [usernameError, setUsernameError] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   // Importe la navigation
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!username) {
+      setUsernameError("Vous devez spécifier un nom d'utilisateur")
+
+      return
+    }
+
+    if (username.length < 3) {
+      setUsernameError('Votre username doit être de 3 caractère minimum')
+
+      return
+    }
+
+    if (username.length > 25) {
+      setUsernameError('Votre username est trop long :/')
+
+      return
+    }
+
+    setUsernameError('')
+  }, [username])
 
   const onChange =
     (setter: (v: string) => void) =>
@@ -50,6 +73,7 @@ export default function Subscription() {
           value={username}
         />
       </UI.InputContainer>
+      <p>{usernameError}</p>
       <UI.InputContainer>
         <UI.Input
           name="email"
