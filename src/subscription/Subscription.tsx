@@ -1,6 +1,6 @@
 import * as UI from '../shared/ui'
 import { useState } from 'react'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../util/firebase'
 
 export default function Subscription() {
@@ -23,6 +23,10 @@ export default function Subscription() {
       email,
       password,
     )
+
+    await updateProfile(credential.user, {
+      displayName: username,
+    })
 
     console.log(credential)
   }
