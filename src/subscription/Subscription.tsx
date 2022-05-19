@@ -2,11 +2,14 @@ import * as UI from '../shared/ui'
 import { useState } from 'react'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../util/firebase'
+import { useNavigate } from 'react-router-dom'
 
 export default function Subscription() {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [email, setEmail] = useState<string>('')
+  // Importe la navigation
+  const navigate = useNavigate()
 
   const onChange =
     (setter: (v: string) => void) =>
@@ -18,17 +21,20 @@ export default function Subscription() {
     // c'est à dire évite le rafraichissement de la page
     e.preventDefault()
 
+    // Création d'un « compte » firebase
     const credential = await createUserWithEmailAndPassword(
       auth,
       email,
       password,
     )
 
+    // Ajout d'un nom d'utilisateur sur firebase
     await updateProfile(credential.user, {
       displayName: username,
     })
 
-    console.log(credential)
+    // Redirection vers la page d'accueil :
+    navigate('/')
   }
 
   return (
