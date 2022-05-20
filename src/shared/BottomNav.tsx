@@ -9,9 +9,10 @@ export type BottomNavProps = {
 export default function BottomNav({ topBar }: BottomNavProps) {
   const [profileOpen, setProfileOpen] = useState<boolean>(false)
 
-  const toggleProfile = () => {
-    setProfileOpen(!profileOpen)
-  }
+  // const openProfile = () => setProfileOpen(true)
+  // const closeProfile = () => setProfileOpen(false)
+
+  const toggleProfile = () => setProfileOpen(!profileOpen)
 
   return (
     <UI.BottomNav>
@@ -24,7 +25,7 @@ export default function BottomNav({ topBar }: BottomNavProps) {
           onClick={toggleProfile}
         ></UI.BottomNavItem>
       </UI.BottomNavMenu>
-      <Profile open={profileOpen} />
+      <Profile open={profileOpen} onClose={toggleProfile} />
     </UI.BottomNav>
   )
 }
