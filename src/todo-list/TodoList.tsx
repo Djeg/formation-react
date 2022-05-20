@@ -1,3 +1,4 @@
+import PubSub from 'pubsub-js'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import uniqid from 'uniqid'
@@ -67,6 +68,17 @@ export default function TodoList() {
     if (storeUser) {
       setUsername(JSON.parse(storeUser).displayName)
     }
+  }, [])
+
+  useEffect(() => {
+    console.log('Souscription au topic "changeUsername"')
+
+    const onUsernameChange = (topic: string, newUsername: string) => {
+      console.log('récéption du username : ' + newUsername)
+      setUsername(newUsername)
+    }
+
+    PubSub.subscribe('changeUsername', onUsernameChange)
   }, [])
 
   // onTaskChange :: (React.SyntheticEvent) -> void
