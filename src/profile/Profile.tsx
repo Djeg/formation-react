@@ -12,8 +12,6 @@ export default function Profile({ open, onClose }: ProfileProps) {
   useEffect(() => {
     const storeUser = localStorage.getItem('user')
 
-    console.log('Coucou')
-
     if (storeUser) {
       setUsername(JSON.parse(storeUser).displayName)
     }
