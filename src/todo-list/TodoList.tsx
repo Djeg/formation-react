@@ -79,6 +79,11 @@ export default function TodoList() {
     }
 
     PubSub.subscribe('changeUsername', onUsernameChange)
+
+    return () => {
+      console.log('Désinscription au topic changeUsername')
+      PubSub.unsubscribe(onUsernameChange)
+    }
   }, [])
 
   // onTaskChange :: (React.SyntheticEvent) -> void

@@ -19,7 +19,6 @@ export default function Profile({ open, onClose }: ProfileProps) {
   }, [])
 
   useEffect(() => {
-    console.log('publication de changeUsername : ' + username)
     PubSub.publish('changeUsername', username)
   }, [username])
 
