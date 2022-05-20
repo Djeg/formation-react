@@ -1,4 +1,5 @@
 import * as Ui from '../shared/ui'
+import { useState, useEffect } from 'react'
 
 type ProfileProps = {
   open?: boolean
@@ -6,6 +7,22 @@ type ProfileProps = {
 }
 
 export default function Profile({ open, onClose }: ProfileProps) {
+  const [username, setUsername] = useState<string>('')
+
+  useEffect(() => {
+    const storeUser = localStorage.getItem('user')
+
+    console.log('Coucou')
+
+    if (storeUser) {
+      setUsername(JSON.parse(storeUser).displayName)
+    }
+  }, [])
+
+  const changeUsername = (e: React.SyntheticEvent<HTMLInputElement>) => {
+    setUsername(e.currentTarget.value)
+  }
+
   return (
     <Ui.GreenRightFrame open={open}>
       <Ui.GreenFrameHeader>
@@ -15,6 +32,17 @@ export default function Profile({ open, onClose }: ProfileProps) {
         ></Ui.GreenFrameClose>
         <Ui.GreenFrameTitle>Mon Profil</Ui.GreenFrameTitle>
       </Ui.GreenFrameHeader>
+      <Ui.AppContainer>
+        <Ui.InputContainer display="white">
+          <Ui.Input
+            type="text"
+            display="white"
+            placeholder="Votre nom d'utilisateur"
+            value={username}
+            onChange={changeUsername}
+          ></Ui.Input>
+        </Ui.InputContainer>
+      </Ui.AppContainer>
     </Ui.GreenRightFrame>
   )
 }

@@ -125,20 +125,31 @@ export const TagLabel = styled.p`
   font-weight: bold;
 `
 
-export const InputContainer = styled.div`
+type InputContainerProps = {
+  display?: 'white' | 'black'
+}
+
+export const InputContainer = styled.div<InputContainerProps>`
   display: flex;
   align-items: center;
   width: 100%;
-  border-bottom: 1px solid ${theme.colors.greenOcean};
+  border-bottom: 1px solid
+    ${props =>
+      props.display === 'white' ? theme.colors.white : theme.colors.greenOcean};
 `
 
-export const Input = styled.input`
+type InputProps = {
+  display?: 'white' | 'black'
+}
+
+export const Input = styled.input<InputProps>`
   display: flex;
   flex-grow: 2;
   background: none;
   border: none;
   padding: 0.6rem;
-  color: ${theme.colors.softBlack};
+  color: ${props =>
+    props.display === 'white' ? theme.colors.white : theme.colors.softBlack};
 
   &:focus {
     outline: none;
