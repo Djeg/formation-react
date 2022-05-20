@@ -1,3 +1,4 @@
+import PubSub from 'pubsub-js'
 import * as Ui from '../shared/ui'
 import { useState, useEffect } from 'react'
 
@@ -16,6 +17,10 @@ export default function Profile({ open, onClose }: ProfileProps) {
       setUsername(JSON.parse(storeUser).displayName)
     }
   }, [])
+
+  useEffect(() => {
+    PubSub.publish('changeUsername', username)
+  }, [username])
 
   const changeUsername = (e: React.SyntheticEvent<HTMLInputElement>) => {
     setUsername(e.currentTarget.value)
