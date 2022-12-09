@@ -15,5 +15,5 @@ Typescript est actuellement développé par Microsoft, et sa [documentation](htt
 - [La documentation de Typescript](https://www.typescriptlang.org/docs/handbook/intro.html)
 - [La documentation de Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript)
 
-[**Chapitre suivant : Les variables et les types**](./variables.md)
+[**Chapitre suivant : Les fondamentaux**](./fondation.md)
 
