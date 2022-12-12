@@ -214,7 +214,43 @@ const nouvelleNotes3 = notes.map(add(2))
 
 ### L'opération `filter`
 
+Cette opération, tout comme `map`, permet de filtrer certains éléments d'un tableaux. Voici sa signature
+
+```typescript
+Array.filter<A>((a: A, index: number) => boolean): A[]
+```
+
+Comme sa signature l'indique, la fonction transmise à `filter` doit retourner un `boolean`. Si vrai, le tableaux retourner inclura l'élement si faux, alors l'élément ne sera pas présent dans le tableaux. Voici un exemple, nous enlevons toutes les notes inférieur à 5 :
+
+```typescript
+// création d'un tableaux de note
+const notes: number[] = [2, 9, 7, 15, 16, 18, 3, 19]
+
+// Nous filtrons le tableaux de notes
+const nouvelleNotes = notes.filer(note => note >= 5)
+```
+
+
+
 ### L'opération `reduce`
+
+Cette opération est plus difficile mais aussi bien plus puissante ! Elle permet de passer d'un tableaux d'élément à n'importe quelle autre type (comme un `string`, `number` etc …). Voici sa signature :
+
+```typescript
+Array.reduce<A, B>((accumulateur: B, element: A, index: number, array: A[]) => B, initialisation: B): B
+```
+
+Un exemple parfait serait le calcule d'une moyenne :
+
+```typescript
+// Création de notes
+const notes: number[] = [12, 15, 9, 7, 16]
+
+// On réduit les notes à une moyenne
+const moyenne = notes.reduce((acc, note) => acc + note, 0) / notes.length
+```
+
+
 
 ## Entraînez-vous !
 
