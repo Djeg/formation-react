@@ -8,9 +8,9 @@ Les fonctions sont tout de même plus compliqué que de simple boîte. Elle peuv
 
 > L'image plus haut récapitule le fonctionnement des fonctions.
 
-##  La Signature
+## La Signature
 
-Une fonction possède naturellement une *notice d'utilisation* que l'on appel : **la signature** :
+Une fonction possède naturellement une _notice d'utilisation_ que l'on appel : **la signature** :
 
 ```typescript
 // Éxemple de signature de la fonction `console.log`
@@ -70,7 +70,7 @@ const resultat = additionner(10, 5) // contient 15
 
 ### Les fonctions « fléchés »
 
-Il existe un autre type de fonctions, plus répandu et bien plus rapide à écrire : **Les fonctions fléchés**. Ces dernières ne sont pas déclarer lors de la compilation mais lors de l’exécution de notre code. Elles n'utilise plus le mot cle `fonction` mais s’enregistre directement dans une variable (ou constante) ! 
+Il existe un autre type de fonctions, plus répandu et bien plus rapide à écrire : **Les fonctions fléchés**. Ces dernières ne sont pas déclarer lors de la compilation mais lors de l’exécution de notre code. Elles n'utilise plus le mot cle `fonction` mais s’enregistre directement dans une variable (ou constante) !
 
 ```typescript
 // Création d'une fonction fléché : « additionner »
@@ -117,7 +117,7 @@ const resultat4 = additionner10(additionner5(2)) // 17
 En programmation fonctionnelle il existe 2 « familles » de fonction.
 
 - **Les fonctions pure** : Se sont des fonctions « prédictible », leurs comportement ne change pas et peuvent être entièrement prévisible. C'est le cas de notre fonctions « additionner », le code de cette fonction retourneras toujours un résultat et ne dépend d'aucune « aide extérieur ».
-- **Les fonctions impure** : Se sont des fonctions qui dépendent d’éléments que nous ne maîtrisons pas. En effet, la fonction `console.log` dépend de l’existence d'une console mais, que ce passerait-il si la console n’existe pas ? La fonction échouerais. Ces fonctions sont dite « impure » car nous ne pouvons maîtriser l'intégralité de son code. 
+- **Les fonctions impure** : Se sont des fonctions qui dépendent d’éléments que nous ne maîtrisons pas. En effet, la fonction `console.log` dépend de l’existence d'une console mais, que ce passerait-il si la console n’existe pas ? La fonction échouerais. Ces fonctions sont dite « impure » car nous ne pouvons maîtriser l'intégralité de son code.
 
 Essayer de regarder les fonctions suivantes et de deviner si elles sont « pure » ou « impure » :
 
@@ -157,16 +157,16 @@ Cette opération permet d’exécuter du code pour chaque élément d'un tableau
 Array.forEach<A>((a: A, index: number) => any): A[]
 ```
 
->  `A` ici est un « generic » nous verrons cela un peut plus tard, retenez juste que cela dépend de ce que contient votre tableaux, si c'est un tableau de `string[]` alors A sera `string`
+> `A` ici est un « generic » nous verrons cela un peut plus tard, retenez juste que cela dépend de ce que contient votre tableaux, si c'est un tableau de `string[]` alors A sera `string`
 
 ```typescript
-// Création d'un tableaux de notes 
+// Création d'un tableaux de notes
 const notes: number = [12, 9, 13, 20, 8]
 
-// On boucle et affiche les notes en utilisant 
+// On boucle et affiche les notes en utilisant
 // l'opération forEach :
-notes.forEach(
-  (note: number, index: number) => console.log(`Note n°${index} : ${note}`)
+notes.forEach((note: number, index: number) =>
+  console.log(`Note n°${index} : ${note}`),
 )
 
 // Nous pouvons aussi découper notre code pour améliorer la lisibilité :
@@ -230,8 +230,6 @@ const notes: number[] = [2, 9, 7, 15, 16, 18, 3, 19]
 const nouvelleNotes = notes.filer(note => note >= 5)
 ```
 
-
-
 ### L'opération `reduce`
 
 Cette opération est plus difficile mais aussi bien plus puissante ! Elle permet de passer d'un tableaux d'élément à n'importe quelle autre type (comme un `string`, `number` etc …). Voici sa signature :
@@ -250,11 +248,10 @@ const notes: number[] = [12, 15, 9, 7, 16]
 const moyenne = notes.reduce((acc, note) => acc + note, 0) / notes.length
 ```
 
-
-
 ## Entraînez-vous !
 
 - [Maîtriser les fonctions avec une calculatrice](https://codepen.io/djeg/pen/bGKJbox)
+- [Maîtriser les fonctions avec des calcules de notes](https://codepen.io/djeg/pen/zYaQRQx)
 
 [Chapitre précédent : Les fondations](./fondation.md)
 
