@@ -1,3 +1,8 @@
+# Correction : Manipuler le JSX
+
+`src/main.tsx` :
+
+```tsx
 // On importe la librairie ReactDOM. Il faut savoir que react
 // fonctionne aussi avec d'autre technologie que le DOM (Document Object Model)
 import ReactDOM from 'react-dom/client'
@@ -53,3 +58,4 @@ reactRoot.render(
     </ul>
   </div>,
 )
+```
