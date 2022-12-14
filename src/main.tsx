@@ -1,6 +1,7 @@
 // On importe la librairie ReactDOM. Il faut savoir que react
 // fonctionne aussi avec d'autre technologie que le DOM (Document Object Model)
 import ReactDOM from 'react-dom/client'
+import App from './Component/App'
 
 // On récupére la balise #root dans lequel notre application
 // react vas s'afficher
@@ -20,36 +21,7 @@ if (!root) {
 // est utilisé pour démarrer l'application
 const reactRoot = ReactDOM.createRoot(root)
 
-// Placer les exercices ici :
-
-type Student = {
-  nom: string
-  prenom: string
-  age: number
-  notes: number[]
-}
-
-const eleve: Student = {
-  nom: 'Doe',
-  prenom: 'John',
-  age: 19,
-  notes: [12, 15, 7, 8, 19, 15],
-}
-
 // On peut afficher du JSX très simplement en utilisant la fonction
 // render de la racine react :
 // C'est ici que vous pouvez afficher le résultat des exercices
-reactRoot.render(
-  <div>
-    <h1>
-      Élève {eleve.nom} {eleve.prenom}
-    </h1>
-    <p>Age : {eleve.age}</p>
-    <h2>Notes :</h2>
-    <ul>
-      {eleve.notes.map((note, index) => (
-        <li key={`note-${index}`}>{note} / 20</li>
-      ))}
-    </ul>
-  </div>,
-)
+reactRoot.render(<App />)
