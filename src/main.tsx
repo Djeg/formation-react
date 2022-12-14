@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import HelloWorld from './Component/HelloWorld'
+import SayHello from './Component/SayHello'
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+// Affiche le composant
+ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement).render(
   <React.StrictMode>
-    <HelloWorld />
+    <SayHello name="John" />
   </React.StrictMode>,
 )
