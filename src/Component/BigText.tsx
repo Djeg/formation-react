@@ -1,3 +1,4 @@
+import * as Style from '../Style/BigText'
 import { BigTextProps } from '../Type/BigText'
 
 /**
@@ -5,8 +6,8 @@ import { BigTextProps } from '../Type/BigText'
  */
 export default function BigText({ children }: BigTextProps) {
   return (
-    <div className="superbig">
-      <h1>{children}</h1>
-    </div>
+    <Style.Container>
+      <Style.Title>{children}</Style.Title>
+    </Style.Container>
   )
 }
