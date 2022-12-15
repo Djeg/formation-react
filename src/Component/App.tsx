@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { GlobalStyle } from '../Style/Global'
-import Design4 from './Design4'
-import Eleve from './Eleve'
+import Counter from './Counter'
 
 /**
  * Composant principal de l'application
@@ -14,7 +13,7 @@ export default function App() {
       {/* utilise le style global */}
       <GlobalStyle />
       {/* Affiche le design n° 4 */}
-      <Design4 />
+      <Counter />
     </StrictMode>
   )
 }
