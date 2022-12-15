@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { GlobalStyle } from '../Style/Global'
-import Counter from './Counter'
+import Calculator from './Calculator'
 
 /**
  * Composant principal de l'application
@@ -12,8 +12,8 @@ export default function App() {
     <StrictMode>
       {/* utilise le style global */}
       <GlobalStyle />
-      {/* Affiche le design n° 4 */}
-      <Counter />
+      {/* Affiche le calculatrice */}
+      <Calculator />
     </StrictMode>
   )
 }
