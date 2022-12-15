@@ -13,3 +13,14 @@
 ## Les corrections
 
 - [Partie 1 : Savoir utiliser le JSX](./assets/correction/exo1.md)
+
+```tsx
+const name = 'Dupont Jean'
+
+const element = (
+  <div className="container">
+    <h1>Bonjour<h1>
+    <p>Votre nom est {name}</p>
+  </div>
+)
+```

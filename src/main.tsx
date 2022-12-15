@@ -21,7 +21,5 @@ if (!root) {
 // est utilisé pour démarrer l'application
 const reactRoot = ReactDOM.createRoot(root)
 
-// On peut afficher du JSX très simplement en utilisant la fonction
-// render de la racine react :
-// C'est ici que vous pouvez afficher le résultat des exercices
+// Affichage du composant HelloWorld :
 reactRoot.render(<App />)
