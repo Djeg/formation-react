@@ -1,11 +1,7 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
-import BigText from './Component/BigText'
+import App from './Component/App'
 
-// Affiche le composant
+// Affiche le composant principal de l'application
 ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement).render(
-  <React.StrictMode>
-    {/* Affichage d'un BigText qui accepte des enfants */}
-    <BigText>Hello World !</BigText>
-  </React.StrictMode>,
+  <App />,
 )
