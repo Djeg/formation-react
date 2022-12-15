@@ -1,9 +1,7 @@
 import { StrictMode } from 'react'
 import { GlobalStyle } from '../Style/Global'
-import Design1 from './Design1'
-import Design2 from './Design2'
-import Design3 from './Design3'
 import Design4 from './Design4'
+import Eleve from './Eleve'
 
 /**
  * Composant principal de l'application
@@ -15,7 +13,7 @@ export default function App() {
     <StrictMode>
       {/* utilise le style global */}
       <GlobalStyle />
-      {/* Affiche le premier design */}
+      {/* Affiche le design n° 4 */}
       <Design4 />
     </StrictMode>
   )
