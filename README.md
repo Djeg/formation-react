@@ -12,6 +12,8 @@
 
 - [Partie 3 : Le compteur](./assets/exos/compteur.md)
 
+- [Partie 4 : La calculatrice](./assets/exos/calc.md)
+
 ## Les corrections
 
 - [Partie 1 : Savoir utiliser le JSX](./assets/correction/exo1.md)
