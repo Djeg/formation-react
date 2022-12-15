@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import SayHello from './Component/SayHello'
+import BigText from './Component/BigText'
 
 // Affiche le composant
 ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement).render(
   <React.StrictMode>
-    <SayHello name="John" />
+    {/* Affichage d'un BigText qui accepte des enfants */}
+    <BigText>Hello World !</BigText>
   </React.StrictMode>,
 )
