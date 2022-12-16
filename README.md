@@ -17,3 +17,7 @@
 ## Les corrections
 
 - [Partie 1 : Savoir utiliser le JSX](./assets/correction/exo1.md)
+
+## Les extras
+
+- [Firebase](./assets/cours/firebase.md)
