@@ -3,7 +3,7 @@ import styled from 'styled-components'
 /**
  * Contient le theme de la calculatrice
  */
-const theme = {
+export const theme = {
   colors: {
     dark: '#220829',
     softDark: '#4c1e58',
