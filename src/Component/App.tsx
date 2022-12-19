@@ -4,6 +4,7 @@ import { MenuContainer, MenuLink } from '../Style/App'
 import { GlobalStyle } from '../Style/Global'
 import Calculator from './Calculator'
 import Counter from './Counter'
+import Hello from './Hello'
 import Timer from './Timer'
 
 /**
@@ -31,6 +32,8 @@ export default function App() {
           <MenuLink to="/">Compteur</MenuLink>
           <MenuLink to="/calculatrice">Calculatrice</MenuLink>
           <MenuLink to="/chrono">Chronomètre</MenuLink>
+          <MenuLink to="/bonjour/David/34">Bonjour 1</MenuLink>
+          <MenuLink to="/bonjour/John/45">Bonjour 2</MenuLink>
         </MenuContainer>
 
         {/* 
@@ -41,6 +44,7 @@ export default function App() {
           <Route path="/" element={<Counter />} />
           <Route path="/calculatrice" element={<Calculator />} />
           <Route path="/chrono" element={<Timer />} />
+          <Route path="/bonjour/:name/:age" element={<Hello />} />
         </Routes>
       </BrowserRouter>
     </StrictMode>
