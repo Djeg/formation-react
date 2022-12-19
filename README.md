@@ -4,6 +4,13 @@
 
 - [Lien vers les slides](https://slides.com/davidjegat-1/react-support/fullscreen)
 
+## Les extras
+
+- [Firebase](./assets/cours/firebase.md)
+- [React Router](./assets/cours/router.md)
+- [Centraliser l'état : nanostores](./assets/cours/nanostores.md)
+- [Architecture d'une application React](./assets/cours/archi.md)
+
 ## Les exercices
 
 - [Partie 1 : Savoir utiliser le JSX](./assets/exos/exo1.md)
@@ -17,7 +24,3 @@
 ## Les corrections
 
 - [Partie 1 : Savoir utiliser le JSX](./assets/correction/exo1.md)
-
-## Les extras
-
-- [Firebase](./assets/cours/firebase.md)
