@@ -48,12 +48,12 @@ Exemple :
 import Home from './Home'
 import Register from './Register'
 import Connect from './Connect'
-import { Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 export default function App() {
   return (
     <>
-      <Router>
+      <BrowserRouter>
         {/* Permet de mettre en place un série de routes */}
         <Routes>
           {/* Mettre en place les routes de l'application en utilisant l'URI */}
@@ -69,7 +69,7 @@ export default function App() {
           <Link to="/inscription">Inscription</Link>
           <StyledLink to="/connexion">Connexion</StyledLink>
         </nav>
-      </Router>
+      </BrowserRouter>
     </>
   )
 }

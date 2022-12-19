@@ -1,6 +1,9 @@
 import { StrictMode } from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { MenuContainer, MenuLink } from '../Style/App'
 import { GlobalStyle } from '../Style/Global'
 import Calculator from './Calculator'
+import Counter from './Counter'
 import Timer from './Timer'
 
 /**
@@ -11,10 +14,35 @@ export default function App() {
     // On active le strict mode pour pouvoir debugger
     // notre application react
     <StrictMode>
-      {/* utilise le style global */}
-      <GlobalStyle />
-      {/* Affiche le chronométre */}
-      <Timer />
+      {/* 
+          On englobe toute l'application dans le router.
+          Ce dernier met en place la navigation
+       */}
+      <BrowserRouter>
+        {/* utilise le style global */}
+        <GlobalStyle />
+
+        {/* Menu de navigation */}
+        <MenuContainer>
+          {/* 
+              Ici, nous utilisons la balise Link de react-router afin
+              de créer des liens, sans rechargement
+          */}
+          <MenuLink to="/">Compteur</MenuLink>
+          <MenuLink to="/calculatrice">Calculatrice</MenuLink>
+          <MenuLink to="/chrono">Chronomètre</MenuLink>
+        </MenuContainer>
+
+        {/* 
+            On créer des routes différentes correspondant à nos
+            différents écrans
+        */}
+        <Routes>
+          <Route path="/" element={<Counter />} />
+          <Route path="/calculatrice" element={<Calculator />} />
+          <Route path="/chrono" element={<Timer />} />
+        </Routes>
+      </BrowserRouter>
     </StrictMode>
   )
 }
