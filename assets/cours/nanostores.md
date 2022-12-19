@@ -126,3 +126,41 @@ export default function Login() {
   )
 }
 ```
+
+### Utiliser des action avec nanostores
+
+Il est possible de créer avec nanostores des actions. Ce sont des fonctions (qui peuvent être asynchrone) qui ont pour rôle de modifier l'état.
+
+Pour créer une action, il faut utiliser la fonction nanostores `action`. Généralement il est conseillé de mettre les actions dans le meme fichier que le store.
+
+Exemple avec le store de login :
+
+```tsx
+// On importe map, permettant de créer un store sous forme d'objet
+import { map, action } from 'nanostores'
+
+// On peut maintenant créer un état sous forme d'objet. Par
+// l'état d'un formulaire de login
+export const loginStore = map({
+  email: '',
+  emailError: '',
+  password: '',
+  passwordError: '',
+  sending: false,
+})
+
+/**
+ * Création d'une action permettant de changer l'email
+ */
+export const setEmail = action(
+  loginStore,
+  'setEmail',
+  (store, newEmail: string) => {
+    // On change l'email par l'email envoyé en paramètre
+    store.setKey('email', newEmail)
+  },
+)
+
+// Pour utiliser l'action :
+setEmail('marie@mail.com')
+```

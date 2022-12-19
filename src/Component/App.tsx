@@ -1,16 +1,21 @@
 import { StrictMode } from 'react'
+import { useStore } from '@nanostores/react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { nanoCalculatorStore } from '../Store/NanoCalculator'
 import { MenuContainer, MenuLink } from '../Style/App'
 import { GlobalStyle } from '../Style/Global'
 import Calculator from './Calculator'
 import Counter from './Counter'
 import Hello from './Hello'
+import NanoCalculator from './NanoCalculator'
 import Timer from './Timer'
 
 /**
  * Composant principal de l'application
  */
 export default function App() {
+  const { resultScreen } = useStore(nanoCalculatorStore)
+
   return (
     // On active le strict mode pour pouvoir debugger
     // notre application react
@@ -31,9 +36,9 @@ export default function App() {
           */}
           <MenuLink to="/">Compteur</MenuLink>
           <MenuLink to="/calculatrice">Calculatrice</MenuLink>
+          <MenuLink to="/nano-calculatrice">Nano Calculatrice</MenuLink>
           <MenuLink to="/chrono">Chronomètre</MenuLink>
-          <MenuLink to="/bonjour/David/34">Bonjour 1</MenuLink>
-          <MenuLink to="/bonjour/John/45">Bonjour 2</MenuLink>
+          <MenuLink to="#">Résultat : {resultScreen}</MenuLink>
         </MenuContainer>
 
         {/* 
@@ -43,6 +48,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Counter />} />
           <Route path="/calculatrice" element={<Calculator />} />
+          <Route path="/nano-calculatrice" element={<NanoCalculator />} />
           <Route path="/chrono" element={<Timer />} />
           <Route path="/bonjour/:name/:age" element={<Hello />} />
         </Routes>

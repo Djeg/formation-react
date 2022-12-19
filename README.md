@@ -9,7 +9,7 @@
 - [Firebase](./assets/cours/firebase.md)
 - [React Router](./assets/cours/router.md)
 - [Centraliser l'état : nanostores](./assets/cours/nanostores.md)
-- [Architecture d'une application React](./assets/cours/archi.md)
+- [React Native](./assets/cours/native.md)
 
 ## Les exercices
 
