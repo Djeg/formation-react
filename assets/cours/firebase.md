@@ -97,7 +97,28 @@ export const firebaseDb = getFirestore(firebase)
 export default { auth: firebaseAuth, db: firebaseDb }
 ```
 
-## Créer un nouvelle utilisateur avec firebase en utilisant l'email et le mot de passe
+### Pour React Native
+
+Pour les utilisateurs react native il faut aussi ajouter 2 étpaes afin que la librairie firebase se compile pour les téléphones :
+
+Customizer la configuration de metro :
+
+```bash
+npx expo customize metro.config.js
+```
+
+Ensuite placer dans le fichier `metro.config.js` le code suivant :
+
+```js
+const { getDefaultConfig } = require('@expo/metro-config')
+
+const defaultConfig = getDefaultConfig(__dirname)
+defaultConfig.resolver.assetExts.push('cjs')
+
+module.exports = defaultConfig
+```
+
+## Créer un nouvel utilisateur avec firebase en utilisant l'email et le mot de passe
 
 Pour chaque opération que vous allez réaliser avec firebase (inscrire un nouvelle utilisateur, créer un nouveau bien immobilier etc ...) ajouter une fonction dans le fichier `src/Lib/Firebase.tsx` ou vous pouvez aussi créer un nouveau fichier comme `src/Lib/Auth.tsx` et y placer les fonctions permettant de se connécter, s'inscrire etc ...
 
