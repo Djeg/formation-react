@@ -11,6 +11,8 @@ Pour installer styled-components rien de compliqué :
 ```bash
 npm i styled-components
 npm i -D @types/styled-components
+# Pour react native et typescript :
+npm i -D @types/styled-components-react-native
 ```
 
 ## Styliser un composant
