@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NativeRouter, Routes, Route } from 'react-router-native'
 
+/**
+ * Voici le composant principal de l'application c'est celui
+ * qui contient tout les écran de l'application.
+ *
+ * Vous retrouverez ici les différentes routes de l'application !
+ */
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <NativeRouter>
+      <Routes>
+        <Route path="/" element={<h1>Hello</h1>} />
+      </Routes>
+    </NativeRouter>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
