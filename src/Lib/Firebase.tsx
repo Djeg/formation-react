@@ -1,12 +1,15 @@
-/**
- * Ce fichier contient la configuration nescessaire
- * au bon fonctionnement de Firebase. Vous retrouverez
- * toutes les fonction permettant de créer, mettre à jour,
- * connécté, inscrire etc ...
- */
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
+
+/**
+ * @module Firebase
+ * @description
+ *  Ce fichier contient la configuration nescessaire
+ *  au bon fonctionnement de Firebase. Vous retrouverez
+ *  toutes les fonction permettant de créer, mettre à jour,
+ *  connécté, inscrire etc ...
+ */
 
 /**
  * Configuration de l'application firebase
