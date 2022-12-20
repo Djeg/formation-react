@@ -6,6 +6,7 @@
 
 ## Les extras
 
+- [Style Components](./assets/cours/styled.md)
 - [Firebase](./assets/cours/firebase.md)
 - [React Router](./assets/cours/router.md)
 - [Centraliser l'état : nanostores](./assets/cours/nanostores.md)
