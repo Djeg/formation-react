@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "testRN",
-    "slug": "testRN",
+    "name": "Super Todo App",
+    "slug": "super-todo-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
