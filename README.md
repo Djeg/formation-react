@@ -45,3 +45,7 @@ Il est conseillé de suivre un certain ordre pour développer l'application :
 6. La connexion & l'inscription
 
 Vous pouvez le projet seul ou en équipe. Durant toute la session n'hésitez pas à demander de l'aide !
+
+La correction du projet se trouve ici :
+
+@todo
