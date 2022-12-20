@@ -11,6 +11,7 @@
 - [React Router](./assets/cours/router.md)
 - [Centraliser l'état : nanostores](./assets/cours/nanostores.md)
 - [React Native](./assets/cours/native.md)
+- [Architecture d'une application React](./assets/cours/archi.md)
 
 ## Les exercices
 
