@@ -11,6 +11,7 @@ import { NativeRouter, Routes, Route } from 'react-router-native'
 import styled from 'styled-components/native'
 import HomeScreen from './src/Component/HomeScreen'
 import NewListScreen from './src/Component/NewListScreen'
+import SubscriptionScreen from './src/Component/SubscriptionScreen'
 import TodoListScreen from './src/Component/TodoListScreen'
 import { MainContainer } from './src/Style/App.Style'
 
@@ -43,6 +44,8 @@ export default function App() {
           <Route path="/new" element={<NewListScreen />} />
           {/* Affiche l'écran de chose à faire */}
           <Route path="/todos" element={<TodoListScreen />} />
+          {/* Affiche la page d'inscription */}
+          <Route path="/inscription" element={<SubscriptionScreen />} />
         </Routes>
       </MainContainer>
     </NativeRouter>

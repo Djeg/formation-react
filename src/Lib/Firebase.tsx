@@ -1,5 +1,11 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { initializeApp } from 'firebase/app'
-import { getAuth } from 'firebase/auth'
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+  signInWithEmailAndPassword,
+} from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 
 /**
@@ -37,3 +43,42 @@ export const firebaseAuth = getAuth(firebaseApp)
  * Contient le service de la base de données de firebase (firestore)
  */
 export const firestore = getFirestore(firebaseApp)
+
+/**
+ * Fonction qui inscrit et connécte un utilisateur sur firebase.
+ * Cette fonction s'occupe aussi d'enregistrer l'utilisateur dans
+ * le AsyncStorage du téléphone pour pouvoir s'en souvenir plus tard !
+ */
+export async function createFirebaseAccount(
+  username: string,
+  email: string,
+  password: string,
+) {
+  // Création d'un utilisateur sur firebase
+  const credential = await createUserWithEmailAndPassword(
+    firebaseAuth,
+    email,
+    password,
+  )
+
+  // On lui assigne un nom d'utilisateur (displayName sur firebase)
+  await updateProfile(credential.user, {
+    displayName: username,
+  })
+
+  // On le connécte à l'application
+  const result = await signInWithEmailAndPassword(firebaseAuth, email, password)
+
+  // On récupére l'utilisateur
+  const user = result.user
+
+  // On enregistre l'utilisateur dans le AsyncStorage
+  await AsyncStorage.setItem('user', user.uid)
+
+  // On retourne l'utilisateur
+  return {
+    id: user.uid,
+    username: user.displayName,
+    email: user.email,
+  }
+}

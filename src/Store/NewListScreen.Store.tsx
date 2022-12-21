@@ -1,13 +1,13 @@
+import { action, map } from 'nanostores'
+import { generateUID } from '../Lib/UniqId'
+import { initTodoListStore } from './TodoListScreen.Store'
+
 /**
  * @module NewListScreen.Store
  * @description
  *  Ce module contient l'état et les actions de la
  *  création d'une nouvelle liste
  */
-
-import { action, map } from 'nanostores'
-import { generateUID } from '../Lib/UniqId'
-import { initTodoListStore } from './TodoListScreen.Store'
 
 /**
  * Store contenant l'état du composant de création d'une
