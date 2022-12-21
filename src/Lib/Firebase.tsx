@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
+import { User } from '../Type/LoginScreen.Type'
 
 /**
  * @module Firebase
@@ -73,7 +74,8 @@ export async function createFirebaseAccount(
   const user = result.user
 
   // On enregistre l'utilisateur dans le AsyncStorage
-  await AsyncStorage.setItem('user', user.uid)
+  await AsyncStorage.setItem('userEmail', email)
+  await AsyncStorage.setItem('userPassword', password)
 
   // On retourne l'utilisateur
   return {
@@ -81,4 +83,67 @@ export async function createFirebaseAccount(
     username: user.displayName,
     email: user.email,
   }
+}
+
+/**
+ * Fonction permettant de se connécter à l'application en utilisant
+ * firebase
+ */
+export async function loginToFirebase(email: string, password: string) {
+  // On le connécte à l'application
+  try {
+    const result = await signInWithEmailAndPassword(
+      firebaseAuth,
+      email,
+      password,
+    )
+
+    // On vérifie l'utilisateur
+    if (!result || !result.user || !result.user.uid) {
+      throw new Error()
+    }
+
+    // On récupére l'utilisateur
+    const user = result.user
+
+    // On enregistre l'utilisateur dans le AsyncStorage
+    await AsyncStorage.setItem('userEmail', email)
+    await AsyncStorage.setItem('userPassword', password)
+
+    // On retourne l'utilisateur
+    return {
+      id: user.uid,
+      username: user.displayName,
+      email: user.email,
+    } as User
+  } catch (e) {
+    // On supprime de l'async storage l'utilisateir
+    await AsyncStorage.removeItem('userEmail')
+    await AsyncStorage.removeItem('userPassword')
+
+    // on retourne rien
+    return null
+  }
+}
+
+/**
+ * Connect un utilisateur en utilisant les données stocké
+ * dans le AsyncStorage
+ */
+export async function loginToFirebaseWithAsyncStorage() {
+  // On récupére l'email / password
+  const email = await AsyncStorage.getItem('userEmail')
+  const password = await AsyncStorage.getItem('userPassword')
+
+  // Si aucun des deux n'éxiste
+  if (!email || !password) {
+    // On supprime le async storage
+    await AsyncStorage.removeItem('userEmail')
+    await AsyncStorage.removeItem('userPassword')
+
+    return
+  }
+
+  // On le connécte à l'application
+  return loginToFirebase(email, password)
 }

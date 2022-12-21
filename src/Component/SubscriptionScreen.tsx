@@ -42,7 +42,10 @@ export default function SubscriptionScreen() {
   return (
     <>
       <CenteredContainer>
+        {/* Titre de la page */}
         <PageTitle>Inscription</PageTitle>
+
+        {/* Les inputs */}
         <Input
           placeholder="Votre nom d'utilisateur ..."
           value={username}
@@ -59,6 +62,8 @@ export default function SubscriptionScreen() {
           value={password}
           onChangeText={setPassword}
         ></Input>
+
+        {/* Le bouton d'envoi ou de chargemen */}
         <SendButtonContainer>
           {loading ? (
             <LoadingButton>
@@ -75,6 +80,8 @@ export default function SubscriptionScreen() {
             </SendButton>
           )}
         </SendButtonContainer>
+
+        {/* Le texte permettatn de se connécter */}
         <TextContainer>
           <SubText>Vous avez dèja un compte ?</SubText>
           <Link to="/">
