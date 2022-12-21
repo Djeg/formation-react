@@ -48,4 +48,4 @@ Vous pouvez le projet seul ou en équipe. Durant toute la session n'hésitez pas
 
 La correction du projet se trouve ici :
 
-@todo
+[Application corrigé](https://github.com/Djeg/formation-react/tree/projet-native/19-12-22/23-12-22)
