@@ -24,6 +24,17 @@ export type Todo = {
  * Définie l'état d'une liste de chose à faire dans l'application.
  */
 export type TodoListScreenState = {
+  id: string
+  label: string
   newTodo: string
   todos: Todo[]
+}
+
+/**
+ * Définie les props envoyé au composant ContentContainer.
+ * Ce dernier peut être après un header (header: false) ou
+ * sans aucun header pour la page d'accueil (header: true).
+ */
+export type ContentContainerProps = {
+  header?: boolean
 }

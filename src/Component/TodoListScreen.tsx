@@ -6,7 +6,7 @@ import {
   faBars,
 } from '@fortawesome/free-solid-svg-icons'
 import { useStore } from '@nanostores/react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, FlatList } from 'react-native'
 import {
   addNewTodo,
   deleteTodo,
@@ -52,16 +52,16 @@ import {
  * Vous retrouverez l'écran sur le design Figma
  */
 export default function TodoListScreen() {
-  const { todos, newTodo } = useStore(TodoListScreenStore)
+  const { todos, newTodo, label } = useStore(TodoListScreenStore)
 
   return (
     <>
       {/* le petit en-tête en haut de l'écran */}
       <TopBarContainer>
-        <BackButton>
+        <BackButton to="/">
           <BackIcon icon={faCircleArrowLeft} size={40} />
         </BackButton>
-        <TopBarTitle>Petites courses</TopBarTitle>
+        <TopBarTitle>{label}</TopBarTitle>
       </TopBarContainer>
 
       {/* Le contenu de la page */}
@@ -85,29 +85,36 @@ export default function TodoListScreen() {
           </TouchableOpacity>
         </TodoInputContainer>
 
-        {/* on boucle sur toutes les choses à faire */}
-        {todos.map(todo => (
-          <TodoItem key={todo.id} done={todo.done}>
-            <TodoLabel done={todo.done} onPress={() => toggleTodo(todo.id)}>
-              {todo.label}
-            </TodoLabel>
-            <TouchableOpacity onPress={() => deleteTodo(todo.id)}>
-              <DeleteTodoIcon icon={faTrash} size={35} />
-            </TouchableOpacity>
-          </TodoItem>
-        ))}
+        {/*
+            on boucle sur toutes les choses à faire en utilisant un flat list
+            pour de bien meilleurs performance !
+        */}
+        <FlatList
+          data={todos}
+          keyExtractor={todo => todo.id}
+          renderItem={({ item: todo }) => (
+            <TodoItem key={todo.id} done={todo.done}>
+              <TodoLabel done={todo.done} onPress={() => toggleTodo(todo.id)}>
+                {todo.label}
+              </TodoLabel>
+              <TouchableOpacity onPress={() => deleteTodo(todo.id)}>
+                <DeleteTodoIcon icon={faTrash} size={30} />
+              </TouchableOpacity>
+            </TodoItem>
+          )}
+        ></FlatList>
       </ContentContainer>
 
       {/* La barre de navigation du bas */}
       <BottomNavContainer>
         <DeleteListButton>
           <TouchableOpacity>
-            <BottomNavIcon icon={faTrash} size={45}></BottomNavIcon>
+            <BottomNavIcon icon={faTrash} size={40}></BottomNavIcon>
           </TouchableOpacity>
         </DeleteListButton>
         <BottomNav>
           <TouchableOpacity>
-            <BottomNavIcon icon={faBars} size={45}></BottomNavIcon>
+            <BottomNavIcon icon={faBars} size={40}></BottomNavIcon>
           </TouchableOpacity>
         </BottomNav>
       </BottomNavContainer>

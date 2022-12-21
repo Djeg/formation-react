@@ -1,7 +1,11 @@
 import styled from 'styled-components/native'
 import { theme } from './Theme.Style'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { TodoItemProps } from '../Type/TodoListScreen.Type'
+import {
+  ContentContainerProps,
+  TodoItemProps,
+} from '../Type/TodoListScreen.Type'
+import { Link } from 'react-router-native'
 
 /**
  * @module TodoListScreen.Style
@@ -28,7 +32,7 @@ export const TopBarContainer = styled.View`
 /**
  * Contient le bouton de retour
  */
-export const BackButton = styled.TouchableOpacity`
+export const BackButton = styled(Link)`
   align-items: center;
   font-size: 30px;
 `
@@ -54,9 +58,10 @@ export const TopBarTitle = styled.Text`
 /**
  * Voici le container du contenu de la page
  */
-export const ContentContainer = styled.ScrollView`
+export const ContentContainer = styled.View<ContentContainerProps>`
   flex: 2;
   flex-grow: 2;
+  margin-top: ${({ header = false }) => (!header ? '0px' : '40px')};
 `
 
 /**

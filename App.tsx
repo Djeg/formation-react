@@ -7,9 +7,9 @@ import {
   Poppins_400Regular,
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins'
-import { View, Text } from 'react-native'
-import { NativeRouter, Routes, Route, Link } from 'react-router-native'
+import { NativeRouter, Routes, Route } from 'react-router-native'
 import styled from 'styled-components/native'
+import HomeScreen from './src/Component/HomeScreen'
 import TodoListScreen from './src/Component/TodoListScreen'
 import { MainContainer } from './src/Style/App.Style'
 
@@ -20,31 +20,24 @@ import { MainContainer } from './src/Style/App.Style'
  * Vous retrouverez ici les différentes routes de l'application !
  */
 export default function App() {
-  useLobster({
+  const [isLobsterReady] = useLobster({
     Lobster_400Regular,
   })
-  usePoppins({
+  const [isPoppinsReady] = usePoppins({
     Poppins_400Regular,
     Poppins_700Bold,
   })
+
+  if (!isLobsterReady || !isPoppinsReady) {
+    return
+  }
 
   return (
     <NativeRouter>
       <MainContainer>
         <Routes>
-          {/* Voici un petit composant provisoire pour la navigation */}
-          <Route
-            path="/"
-            element={
-              <View>
-                <Text>
-                  <Link to="/todos/2">
-                    <MenuItem>Test ?</MenuItem>
-                  </Link>
-                </Text>
-              </View>
-            }
-          />
+          {/* Affiche la page d'accueil */}
+          <Route path="/" element={<HomeScreen />} />
           {/* Affiche l'écran de chose à faire */}
           <Route path="/todos/:id" element={<TodoListScreen />} />
         </Routes>

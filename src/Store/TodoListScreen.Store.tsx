@@ -1,6 +1,7 @@
 import { map } from 'nanostores'
 import { action } from 'nanostores/action'
 import { generateUID } from '../Lib/UniqId'
+import { TodoList } from '../Type/HomeScreen.Type'
 import { TodoListScreenState } from '../Type/TodoListScreen.Type'
 
 /**
@@ -15,6 +16,8 @@ import { TodoListScreenState } from '../Type/TodoListScreen.Type'
  * d'affichage de la liste des todos
  */
 export const TodoListScreenStore = map<TodoListScreenState>({
+  id: '1',
+  label: 'Petites courses',
   newTodo: '',
   todos: [
     { label: 'Acheter du chocolat', done: false, id: '1' },
@@ -25,12 +28,26 @@ export const TodoListScreenStore = map<TodoListScreenState>({
 })
 
 /**
+ * Initialize le store avec une todo list
+ */
+export const initTodoListStore = action(
+  TodoListScreenStore,
+  'initTodoListStore',
+  async (store, list: TodoList) => {
+    // on met à jour l'id, le label et les todos
+    store.setKey('id', list.id)
+    store.setKey('label', list.label)
+    store.setKey('todos', list.todos)
+  },
+)
+
+/**
  * Modifie le nouveau todo à ajouter à la liste
  */
 export const setNewTodo = action(
   TodoListScreenStore,
   'setNewTodo',
-  async (store, newTodo: string) => {
+  (store, newTodo: string) => {
     store.setKey('newTodo', newTodo)
   },
 )
@@ -38,28 +55,24 @@ export const setNewTodo = action(
 /**
  * Ajoute le nouveau todo dans la liste de chose à faire
  */
-export const addNewTodo = action(
-  TodoListScreenStore,
-  'addNewTodo',
-  async store => {
-    // On récupére le todo en cours
-    const newTodo = store.get().newTodo
-    // On récupére la liste des todos
-    const currentList = store.get().todos
-    // On créé un nouveau todo :
-    const todo = {
-      id: generateUID(),
-      label: newTodo,
-      done: false,
-    }
+export const addNewTodo = action(TodoListScreenStore, 'addNewTodo', store => {
+  // On récupére le todo en cours
+  const newTodo = store.get().newTodo
+  // On récupére la liste des todos
+  const currentList = store.get().todos
+  // On créé un nouveau todo :
+  const todo = {
+    id: generateUID(),
+    label: newTodo,
+    done: false,
+  }
 
-    // On met à jour la liste des todos
-    store.setKey('todos', [todo, ...currentList])
+  // On met à jour la liste des todos
+  store.setKey('todos', [todo, ...currentList])
 
-    // On vide le nouveau todo
-    store.setKey('newTodo', '')
-  },
-)
+  // On vide le nouveau todo
+  store.setKey('newTodo', '')
+})
 
 /**
  * Permet de terminer ou de refaire un élément à faire
@@ -67,7 +80,7 @@ export const addNewTodo = action(
 export const toggleTodo = action(
   TodoListScreenStore,
   'toggleTodo',
-  async (store, id: string) => {
+  (store, id: string) => {
     // on récupére la liste de todos
     const todos = store.get().todos
 
@@ -86,7 +99,7 @@ export const toggleTodo = action(
 export const deleteTodo = action(
   TodoListScreenStore,
   'deleteTodo',
-  async (store, id: string) => {
+  (store, id: string) => {
     // on récupére la liste de todos
     const todos = store.get().todos
 
