@@ -41,7 +41,7 @@ export const CardTitle = styled.Text`
 /**
  * Contient un bouton
  */
-export const ButtonContainer = styled.View`
+export const ButtonContainer = styled(Link)`
   flex-direction: row;
   align-items: center;
   justify-content: center;

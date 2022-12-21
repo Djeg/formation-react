@@ -12,7 +12,6 @@ import { Todo } from './TodoListScreen.Type'
 export type TodoList = {
   id: string
   label: string
-  user: string
   todos: Todo[]
 }
 

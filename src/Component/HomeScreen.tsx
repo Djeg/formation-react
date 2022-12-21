@@ -1,7 +1,9 @@
 import { faBars, faCirclePlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import { useStore } from '@nanostores/react'
 import { TouchableOpacity, FlatList } from 'react-native'
+import { Link } from 'react-router-native'
 import { HomeScreenStore } from '../Store/HomeScreen.Store'
+import { initNewListStore } from '../Store/NewListScreen.Store'
 import { initTodoListStore } from '../Store/TodoListScreen.Store'
 import {
   ButtonContainer,
@@ -48,7 +50,7 @@ export default function HomeScreen() {
           keyExtractor={list => list.id}
           renderItem={({ item: list }) => (
             <ListCardContainer
-              to={`/todos/${list.id}`}
+              to={`/todos`}
               onPress={() => initTodoListStore(list)}
             >
               <>
@@ -57,7 +59,7 @@ export default function HomeScreen() {
                     <UserIcon icon={faUser} size={35}></UserIcon>
                     <UserLabelContainer>
                       <UserLabel>Par</UserLabel>
-                      <UserUsername>{list.user}</UserUsername>
+                      <UserUsername>John</UserUsername>
                     </UserLabelContainer>
                   </UserBanner>
                 </UserBannerContainer>
@@ -73,10 +75,8 @@ export default function HomeScreen() {
 
       {/* La barre de navigation du bas */}
       <BottomNavContainer>
-        <ButtonContainer>
-          <TouchableOpacity>
-            <BottomNavIcon icon={faCirclePlus} size={40}></BottomNavIcon>
-          </TouchableOpacity>
+        <ButtonContainer to="/new" onPress={() => initNewListStore()}>
+          <BottomNavIcon icon={faCirclePlus} size={40}></BottomNavIcon>
         </ButtonContainer>
         <BottomNav>
           <TouchableOpacity>

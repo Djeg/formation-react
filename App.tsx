@@ -10,6 +10,7 @@ import {
 import { NativeRouter, Routes, Route } from 'react-router-native'
 import styled from 'styled-components/native'
 import HomeScreen from './src/Component/HomeScreen'
+import NewListScreen from './src/Component/NewListScreen'
 import TodoListScreen from './src/Component/TodoListScreen'
 import { MainContainer } from './src/Style/App.Style'
 
@@ -38,8 +39,10 @@ export default function App() {
         <Routes>
           {/* Affiche la page d'accueil */}
           <Route path="/" element={<HomeScreen />} />
+          {/* Affiche la page de création d'une nouvelle liste */}
+          <Route path="/new" element={<NewListScreen />} />
           {/* Affiche l'écran de chose à faire */}
-          <Route path="/todos/:id" element={<TodoListScreen />} />
+          <Route path="/todos" element={<TodoListScreen />} />
         </Routes>
       </MainContainer>
     </NativeRouter>
