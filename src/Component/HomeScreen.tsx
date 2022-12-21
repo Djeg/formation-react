@@ -1,8 +1,9 @@
+import { useEffect } from 'react'
 import { faBars, faCirclePlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import { useStore } from '@nanostores/react'
 import { TouchableOpacity, FlatList } from 'react-native'
 import { Link } from 'react-router-native'
-import { HomeScreenStore } from '../Store/HomeScreen.Store'
+import { HomeScreenStore, initHomeScreen } from '../Store/HomeScreen.Store'
 import { initNewListStore } from '../Store/NewListScreen.Store'
 import { initTodoListStore } from '../Store/TodoListScreen.Store'
 import {
@@ -23,6 +24,8 @@ import {
   UserLabelContainer,
   UserUsername,
 } from '../Style/TodoListScreen.Style'
+import { LoginScreenStore } from '../Store/LoginScreen.Store'
+import { User } from '../Type/LoginScreen.Type'
 
 /**
  * @module HomeScreen
@@ -37,6 +40,14 @@ import {
 export default function HomeScreen() {
   // On récupére l'état de l'ecran d'accueil
   const { lists } = useStore(HomeScreenStore)
+  // On récupére l'utilisateur connécté
+  const { user } = useStore(LoginScreenStore)
+
+  // Création d'un effet qui initialise le store de la page
+  // d'accueil
+  useEffect(() => {
+    initHomeScreen(user as User)
+  }, [])
 
   return (
     <>
@@ -59,7 +70,9 @@ export default function HomeScreen() {
                     <UserIcon icon={faUser} size={35}></UserIcon>
                     <UserLabelContainer>
                       <UserLabel>Par</UserLabel>
-                      <UserUsername>John</UserUsername>
+                      <UserUsername>
+                        {user?.username || 'Inconnue'}
+                      </UserUsername>
                     </UserLabelContainer>
                   </UserBanner>
                 </UserBannerContainer>

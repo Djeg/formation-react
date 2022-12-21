@@ -30,6 +30,8 @@ import {
   setLabel,
 } from '../Store/NewListScreen.Store'
 import { Link } from 'react-router-native'
+import { User } from '../Type/LoginScreen.Type'
+import { LoginScreenStore } from '../Store/LoginScreen.Store'
 
 /**
  * @module NewListScreen
@@ -44,6 +46,8 @@ import { Link } from 'react-router-native'
 export default function NewListScreen() {
   // On récupére l'état de l'écran de nouvelle liste
   const { label } = useStore(NewListScreenStore)
+  // On récupére l'utilisateur connécté
+  const { user } = useStore(LoginScreenStore)
 
   return (
     <>
@@ -63,7 +67,7 @@ export default function NewListScreen() {
             <UserIcon icon={faUser} size={35}></UserIcon>
             <UserLabelContainer>
               <UserLabel>Par</UserLabel>
-              <UserUsername>John Doe</UserUsername>
+              <UserUsername>{user?.username || 'Inconnue'}</UserUsername>
             </UserLabelContainer>
           </UserBanner>
         </UserBannerContainer>
@@ -80,7 +84,10 @@ export default function NewListScreen() {
 
       {/* La barre de navigation du bas */}
       <BottomNavContainer>
-        <ButtonContainer to="/todos" onPress={createNewList}>
+        <ButtonContainer
+          to="/todos"
+          onPress={() => createNewList(user as User)}
+        >
           <BottomNavIcon icon={faCirclePlus} size={40}></BottomNavIcon>
         </ButtonContainer>
         <BottomNav>

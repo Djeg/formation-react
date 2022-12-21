@@ -7,7 +7,16 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
+import {
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  query,
+  setDoc,
+  where,
+} from 'firebase/firestore'
+import { TodoList } from '../Type/HomeScreen.Type'
 import { User } from '../Type/LoginScreen.Type'
 
 /**
@@ -162,4 +171,40 @@ export async function firebaseLogout() {
   // On supprime le local storage
   await AsyncStorage.removeItem('userEmail')
   await AsyncStorage.removeItem('userPassword')
+}
+
+/**
+ * Récupération de la liste des choses à faire pour l'utilisateur
+ * connécté
+ */
+export async function getFirebaseTodoList(user: User) {
+  // création de la query
+  const q = query(
+    collection(firestore, 'todoLists'),
+    where('user', '==', user.id),
+  )
+
+  // Récupération du snap de la liste
+  const snap = await getDocs(q)
+
+  // Récupération des données et formatage
+  const lists = snap.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data(),
+  }))
+
+  // On retourne la liste
+  return lists as TodoList[]
+}
+
+/**
+ * Création ou mise à jout d'une nouvelle liste de chose à faire
+ */
+export async function setFirebaseTodoList(user: User, todoList: TodoList) {
+  // Création du document sur firebase
+  await setDoc(doc(firestore, 'todoLists', todoList.id), {
+    label: todoList.label,
+    user: user.id,
+    todos: todoList.todos,
+  })
 }

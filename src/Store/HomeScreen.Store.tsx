@@ -1,5 +1,7 @@
 import { action, map } from 'nanostores'
+import { getFirebaseTodoList } from '../Lib/Firebase'
 import { HomeScreenState } from '../Type/HomeScreen.Type'
+import { User } from '../Type/LoginScreen.Type'
 
 /**
  * @module HomeScreen.Store
@@ -11,17 +13,21 @@ import { HomeScreenState } from '../Type/HomeScreen.Type'
  * Contient le store contenant l'état de la page d'accueil
  */
 export const HomeScreenStore = map<HomeScreenState>({
-  lists: [
-    {
-      id: '1',
-      label: 'Petites courses',
-      user: 'John',
-      todos: [
-        { id: '1', label: 'Acheter du chocolat', done: false },
-        { id: '2', label: 'Acheter du chocolat', done: true },
-        { id: '3', label: 'Acheter du chocolat', done: false },
-        { id: '4', label: 'Acheter du chocolat', done: true },
-      ],
-    },
-  ],
+  lists: [],
 })
+
+/**
+ * Action se déclenchant à l'affichage du composant d'accueil qui
+ * récupére la liste des choses à faire depuis firebase !
+ */
+export const initHomeScreen = action(
+  HomeScreenStore,
+  'initHomeScreen',
+  async (store, user: User) => {
+    // Récupération de la liste
+    const lists = await getFirebaseTodoList(user)
+
+    // Mise à jour de l'état
+    store.setKey('lists', lists)
+  },
+)

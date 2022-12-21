@@ -1,5 +1,7 @@
 import { action, map } from 'nanostores'
+import { setFirebaseTodoList } from '../Lib/Firebase'
 import { generateUID } from '../Lib/UniqId'
+import { User } from '../Type/LoginScreen.Type'
 import { initTodoListStore } from './TodoListScreen.Store'
 
 /**
@@ -48,7 +50,7 @@ export const initNewListStore = action(
 export const createNewList = action(
   NewListScreenStore,
   'createNewList',
-  store => {
+  async (store, user: User) => {
     // On récupére le nom de la liste
     const label = store.get().label
     // On créer une nouvelle TodoList
@@ -60,5 +62,8 @@ export const createNewList = action(
 
     // On met à jour l'état de composant TodoListScreen
     initTodoListStore(list)
+
+    // On créé la liste sur firebase
+    await setFirebaseTodoList(user, list)
   },
 )

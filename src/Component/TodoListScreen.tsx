@@ -8,6 +8,7 @@ import {
 import { useStore } from '@nanostores/react'
 import { TouchableOpacity, FlatList } from 'react-native'
 import { Link } from 'react-router-native'
+import { LoginScreenStore } from '../Store/LoginScreen.Store'
 import {
   addNewTodo,
   deleteTodo,
@@ -38,6 +39,7 @@ import {
   BottomNavIcon,
   DeleteListButton,
 } from '../Style/TodoListScreen.Style'
+import { User } from '../Type/LoginScreen.Type'
 
 /**
  * @module TodoListScreen
@@ -54,10 +56,12 @@ import {
  */
 export default function TodoListScreen() {
   const { todos, newTodo, label } = useStore(TodoListScreenStore)
+  // Récupération de l'utilisateur connécté
+  const { user } = useStore(LoginScreenStore)
 
   return (
     <>
-      {/* le petit en-tête en haut de l'écran */}
+      {/* le petit enJohn Doe-tête en haut de l'écran */}
       <TopBarContainer>
         <BackButton to="/">
           <BackIcon icon={faCircleArrowLeft} size={40} />
@@ -73,7 +77,7 @@ export default function TodoListScreen() {
             <UserIcon icon={faUser} size={35}></UserIcon>
             <UserLabelContainer>
               <UserLabel>Par</UserLabel>
-              <UserUsername>John Doe</UserUsername>
+              <UserUsername>{user?.username || 'Inconnue'}</UserUsername>
             </UserLabelContainer>
           </UserBanner>
         </UserBannerContainer>
@@ -81,7 +85,7 @@ export default function TodoListScreen() {
         {/* Contient ici l'input pour ajouter un nouveau todo */}
         <TodoInputContainer>
           <TodoInput onChangeText={setNewTodo} value={newTodo}></TodoInput>
-          <TouchableOpacity onPress={() => addNewTodo()}>
+          <TouchableOpacity onPress={() => addNewTodo(user as User)}>
             <TodoAddIcon icon={faCirclePlus} size={40}></TodoAddIcon>
           </TouchableOpacity>
         </TodoInputContainer>
@@ -95,10 +99,15 @@ export default function TodoListScreen() {
           keyExtractor={todo => todo.id}
           renderItem={({ item: todo }) => (
             <TodoItem key={todo.id} done={todo.done}>
-              <TodoLabel done={todo.done} onPress={() => toggleTodo(todo.id)}>
+              <TodoLabel
+                done={todo.done}
+                onPress={() => toggleTodo(todo.id, user as User)}
+              >
                 {todo.label}
               </TodoLabel>
-              <TouchableOpacity onPress={() => deleteTodo(todo.id)}>
+              <TouchableOpacity
+                onPress={() => deleteTodo(todo.id, user as User)}
+              >
                 <DeleteTodoIcon icon={faTrash} size={30} />
               </TouchableOpacity>
             </TodoItem>

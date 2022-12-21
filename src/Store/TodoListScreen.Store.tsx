@@ -1,7 +1,9 @@
 import { map } from 'nanostores'
 import { action } from 'nanostores/action'
+import { setFirebaseTodoList } from '../Lib/Firebase'
 import { generateUID } from '../Lib/UniqId'
 import { TodoList } from '../Type/HomeScreen.Type'
+import { User } from '../Type/LoginScreen.Type'
 import { TodoListScreenState } from '../Type/TodoListScreen.Type'
 
 /**
@@ -55,24 +57,37 @@ export const setNewTodo = action(
 /**
  * Ajoute le nouveau todo dans la liste de chose à faire
  */
-export const addNewTodo = action(TodoListScreenStore, 'addNewTodo', store => {
-  // On récupére le todo en cours
-  const newTodo = store.get().newTodo
-  // On récupére la liste des todos
-  const currentList = store.get().todos
-  // On créé un nouveau todo :
-  const todo = {
-    id: generateUID(),
-    label: newTodo,
-    done: false,
-  }
+export const addNewTodo = action(
+  TodoListScreenStore,
+  'addNewTodo',
+  async (store, user: User) => {
+    // On récupére le todo en cours
+    const { newTodo, id, label, todos } = store.get()
+    // On créé un nouveau todo :
+    const todo = {
+      id: generateUID(),
+      label: newTodo,
+      done: false,
+    }
 
-  // On met à jour la liste des todos
-  store.setKey('todos', [todo, ...currentList])
+    // On créer un nouveau tableaux contenant le nouveau
+    // todo
+    const newTodos = [todo, ...todos]
 
-  // On vide le nouveau todo
-  store.setKey('newTodo', '')
-})
+    // On met à jour la liste des todos
+    store.setKey('todos', newTodos)
+
+    // On vide le nouveau todo
+    store.setKey('newTodo', '')
+
+    // On synchronize firebase
+    await setFirebaseTodoList(user, {
+      id,
+      label,
+      todos: newTodos,
+    })
+  },
+)
 
 /**
  * Permet de terminer ou de refaire un élément à faire
@@ -80,16 +95,22 @@ export const addNewTodo = action(TodoListScreenStore, 'addNewTodo', store => {
 export const toggleTodo = action(
   TodoListScreenStore,
   'toggleTodo',
-  (store, id: string) => {
-    // on récupére la liste de todos
-    const todos = store.get().todos
+  async (store, id: string, user: User) => {
+    // on récupére l'état
+    const { todos, label, id: listId } = store.get()
+
+    // ON créé un nouveau tableaux contenant les todos complété
+    const newTodos = todos.map(t => (t.id !== id ? t : { ...t, done: !t.done }))
 
     // On met à jour la liste en modifiant le todos
-    // avec l'identifiant passé en paramètre :
-    store.setKey(
-      'todos',
-      todos.map(t => (t.id !== id ? t : { ...t, done: !t.done })),
-    )
+    store.setKey('todos', newTodos)
+
+    // on synchronize avec firebase
+    await setFirebaseTodoList(user, {
+      id: listId,
+      label,
+      todos: newTodos,
+    })
   },
 )
 
@@ -99,15 +120,23 @@ export const toggleTodo = action(
 export const deleteTodo = action(
   TodoListScreenStore,
   'deleteTodo',
-  (store, id: string) => {
-    // on récupére la liste de todos
-    const todos = store.get().todos
+  async (store, id: string, user: User) => {
+    // on récupére l'état
+    const { todos, label, id: listId } = store.get()
+
+    // ON créé un nouveau tableaux contenant les todos moins le todo
+    // à supprimer
+    const newTodos = todos.filter(t => t.id !== id)
 
     // On met à jour la liste en supprimant le todo
     // avec l'identifiant passé en paramètre :
-    store.setKey(
-      'todos',
-      todos.filter(t => t.id !== id),
-    )
+    store.setKey('todos', newTodos)
+
+    // on synchronize avec firebase
+    await setFirebaseTodoList(user, {
+      id: listId,
+      label,
+      todos: newTodos,
+    })
   },
 )
