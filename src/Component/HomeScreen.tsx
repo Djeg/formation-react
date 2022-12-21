@@ -79,9 +79,9 @@ export default function HomeScreen() {
           <BottomNavIcon icon={faCirclePlus} size={40}></BottomNavIcon>
         </ButtonContainer>
         <BottomNav>
-          <TouchableOpacity>
+          <Link to="/menu">
             <BottomNavIcon icon={faBars} size={40}></BottomNavIcon>
-          </TouchableOpacity>
+          </Link>
         </BottomNav>
       </BottomNavContainer>
     </>

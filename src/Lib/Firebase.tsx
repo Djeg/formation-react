@@ -5,6 +5,7 @@ import {
   getAuth,
   updateProfile,
   signInWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import { User } from '../Type/LoginScreen.Type'
@@ -146,4 +147,19 @@ export async function loginToFirebaseWithAsyncStorage() {
 
   // On le connécte à l'application
   return loginToFirebase(email, password)
+}
+
+/**
+ * Déconécte un utilisateur de firebase et supprime les données
+ * enregistré sur le téléphone
+ */
+export async function firebaseLogout() {
+  // On commence par déconnécter l'utilisateur firebase
+  try {
+    await signOut(firebaseAuth)
+  } catch (e) {}
+
+  // On supprime le local storage
+  await AsyncStorage.removeItem('userEmail')
+  await AsyncStorage.removeItem('userPassword')
 }

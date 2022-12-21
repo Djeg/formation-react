@@ -29,6 +29,7 @@ import {
   NewListScreenStore,
   setLabel,
 } from '../Store/NewListScreen.Store'
+import { Link } from 'react-router-native'
 
 /**
  * @module NewListScreen
@@ -83,9 +84,9 @@ export default function NewListScreen() {
           <BottomNavIcon icon={faCirclePlus} size={40}></BottomNavIcon>
         </ButtonContainer>
         <BottomNav>
-          <TouchableOpacity>
+          <Link to="/menu">
             <BottomNavIcon icon={faBars} size={40}></BottomNavIcon>
-          </TouchableOpacity>
+          </Link>
         </BottomNav>
       </BottomNavContainer>
     </>

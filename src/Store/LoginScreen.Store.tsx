@@ -1,5 +1,6 @@
 import { action, map } from 'nanostores'
 import {
+  firebaseLogout,
   loginToFirebase,
   loginToFirebaseWithAsyncStorage,
 } from '../Lib/Firebase'
@@ -98,3 +99,23 @@ export const initLoginScreen = action(
     store.setKey('user', user)
   },
 )
+
+/**
+ * Déconnecte un utilisateur connécté
+ */
+export const logout = action(LoginScreenStore, 'logout', async store => {
+  // on récupére l'utilisateur dans le state
+  const { user } = store.get()
+
+  // Si il n'y dèja pas d'utilisateur on ne fait rien
+  if (!user) {
+    return
+  }
+
+  // Sinon on clean l'état et on déconnécte de firebase
+  firebaseLogout()
+
+  store.setKey('loading', false)
+  store.setKey('password', '')
+  store.setKey('user', undefined)
+})

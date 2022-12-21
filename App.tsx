@@ -11,6 +11,7 @@ import { NativeRouter, Routes, Route } from 'react-router-native'
 import styled from 'styled-components/native'
 import HomeScreen from './src/Component/HomeScreen'
 import LogginScreen from './src/Component/LoginScreen'
+import Menu from './src/Component/Menu'
 import NewListScreen from './src/Component/NewListScreen'
 import SubscriptionScreen from './src/Component/SubscriptionScreen'
 import TodoListScreen from './src/Component/TodoListScreen'
@@ -42,11 +43,13 @@ export default function App() {
           {/* On commence par afficher le formulaire de connexion */}
           <Route path="/" element={<LogginScreen></LogginScreen>}>
             {/* Affiche la page d'accueil */}
-            <Route path="" element={<HomeScreen></HomeScreen>} />
+            <Route path="" element={<HomeScreen />} />
             {/* Affiche la page de création d'une nouvelle liste */}
             <Route path="new" element={<NewListScreen />} />
             {/* Affiche l'écran de chose à faire */}
             <Route path="todos" element={<TodoListScreen />} />
+            {/* Affichage du menu */}
+            <Route path="menu" element={<Menu />} />
           </Route>
 
           {/* Affiche la page d'inscription */}

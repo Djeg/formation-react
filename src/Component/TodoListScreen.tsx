@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { useStore } from '@nanostores/react'
 import { TouchableOpacity, FlatList } from 'react-native'
+import { Link } from 'react-router-native'
 import {
   addNewTodo,
   deleteTodo,
@@ -113,9 +114,9 @@ export default function TodoListScreen() {
           </TouchableOpacity>
         </DeleteListButton>
         <BottomNav>
-          <TouchableOpacity>
+          <Link to="/menu">
             <BottomNavIcon icon={faBars} size={40}></BottomNavIcon>
-          </TouchableOpacity>
+          </Link>
         </BottomNav>
       </BottomNavContainer>
     </>
