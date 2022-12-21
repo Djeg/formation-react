@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { faBars, faCirclePlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import { useStore } from '@nanostores/react'
-import { TouchableOpacity, FlatList } from 'react-native'
+import { FlatList } from 'react-native'
 import { Link } from 'react-router-native'
 import { HomeScreenStore, initHomeScreen } from '../Store/HomeScreen.Store'
 import { initNewListStore } from '../Store/NewListScreen.Store'

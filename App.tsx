@@ -8,7 +8,6 @@ import {
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins'
 import { NativeRouter, Routes, Route } from 'react-router-native'
-import styled from 'styled-components/native'
 import HomeScreen from './src/Component/HomeScreen'
 import LogginScreen from './src/Component/LoginScreen'
 import Menu from './src/Component/Menu'
@@ -24,14 +23,18 @@ import { MainContainer } from './src/Style/App.Style'
  * Vous retrouverez ici les différentes routes de l'application !
  */
 export default function App() {
+  // Chargement de la police d'écriture "Lobster"
   const [isLobsterReady] = useLobster({
     Lobster_400Regular,
   })
+
+  // Chargement de la police d'écriture "Poppins"
   const [isPoppinsReady] = usePoppins({
     Poppins_400Regular,
     Poppins_700Bold,
   })
 
+  // On attend que le chargement des polices soit efféctué
   if (!isLobsterReady || !isPoppinsReady) {
     return
   }
@@ -59,8 +62,3 @@ export default function App() {
     </NativeRouter>
   )
 }
-
-export const MenuItem = styled.Text`
-  margin-top: 100px;
-  text-align: center;
-`
