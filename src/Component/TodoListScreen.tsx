@@ -8,6 +8,7 @@ import {
 import { useStore } from '@nanostores/react'
 import { TouchableOpacity, FlatList } from 'react-native'
 import { Link } from 'react-router-native'
+import { removeFirebaseTodoList } from '../Lib/Firebase'
 import { LoginScreenStore } from '../Store/LoginScreen.Store'
 import {
   addNewTodo,
@@ -55,7 +56,7 @@ import { User } from '../Type/LoginScreen.Type'
  * Vous retrouverez l'écran sur le design Figma
  */
 export default function TodoListScreen() {
-  const { todos, newTodo, label } = useStore(TodoListScreenStore)
+  const { id, todos, newTodo, label } = useStore(TodoListScreenStore)
   // Récupération de l'utilisateur connécté
   const { user } = useStore(LoginScreenStore)
 
@@ -118,9 +119,18 @@ export default function TodoListScreen() {
       {/* La barre de navigation du bas */}
       <BottomNavContainer>
         <DeleteListButton>
-          <TouchableOpacity>
+          <Link
+            to="/"
+            onPress={e => {
+              removeFirebaseTodoList({
+                id,
+                label,
+                todos,
+              })
+            }}
+          >
             <BottomNavIcon icon={faTrash} size={40}></BottomNavIcon>
-          </TouchableOpacity>
+          </Link>
         </DeleteListButton>
         <BottomNav>
           <Link to="/menu">

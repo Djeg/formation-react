@@ -43,6 +43,9 @@ export default function LogginScreen() {
 
   // Si il y a un utilisateur
   if (user) {
+    // On affiche tout les enfants de la route et non plus
+    // le formulaire de connexion
+    // @link https://reactrouter.com/en/main/components/outlet
     return <Outlet></Outlet>
   }
 

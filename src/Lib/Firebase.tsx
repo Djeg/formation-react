@@ -9,6 +9,7 @@ import {
 } from 'firebase/auth'
 import {
   collection,
+  deleteDoc,
   doc,
   getDocs,
   getFirestore,
@@ -207,4 +208,11 @@ export async function setFirebaseTodoList(user: User, todoList: TodoList) {
     user: user.id,
     todos: todoList.todos,
   })
+}
+
+/**
+ * Suppression d'une todo list
+ */
+export async function removeFirebaseTodoList(todoList: TodoList) {
+  await deleteDoc(doc(firestore, 'todoLists', todoList.id))
 }
