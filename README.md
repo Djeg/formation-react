@@ -1,5 +1,8 @@
 # Formation React
 
+Ce dossier contient le support de la formation React et React Native. Vous retrouverez
+l'intégralité des supports ainsi que des correction en cliquant sur les liens suivants :
+
 ## Le support de formation
 
 - [Lien vers les slides](https://slides.com/davidjegat-1/react-support/fullscreen)
@@ -12,20 +15,6 @@
 - [Centraliser l'état : nanostores](./assets/cours/nanostores.md)
 - [React Native](./assets/cours/native.md)
 - [Architecture d'une application React](./assets/cours/archi.md)
-
-## Les exercices
-
-- [Partie 1 : Savoir utiliser le JSX](./assets/exos/exo1.md)
-
-- [Partie 2 : Organiser et styliser une application react](./assets/exos/exo2.md)
-
-- [Partie 3 : Le compteur](./assets/exos/compteur.md)
-
-- [Partie 4 : La calculatrice](./assets/exos/calc.md)
-
-## Les corrections
-
-- [Partie 1 : Savoir utiliser le JSX](./assets/correction/exo1.md)
 
 ## Le projet
 
@@ -49,4 +38,5 @@ Vous pouvez le projet seul ou en équipe. Durant toute la session n'hésitez pas
 La correction du projet se trouve ici :
 
 [Application corrigé](https://github.com/Djeg/formation-react/tree/projet-native/19-12-22/23-12-22)
+
 [Editeur de code de l'application corrigé](https://github1s.com/Djeg/formation-react/tree/projet-native/19-12-22/23-12-22)
