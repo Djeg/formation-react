@@ -3,6 +3,17 @@
 Ce dossier contient le code de l'application de TODO de la session
 02/01/2023 au 06/01/2023
 
+## Installation
+
+Cloner ou téléchargez le projet et dans un terminal lancer les commandes :
+
+```bash
+# Commande d'installation des librairies
+npm i
+# Commande pour lancer l'application
+npm run dev
+```
+
 ## Les supports de formation
 
 - [React - Les fondamentaux](https://slides.com/davidjegat-1/react-support/fullscreen)
