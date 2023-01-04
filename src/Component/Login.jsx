@@ -1,6 +1,11 @@
 import { useStore } from '@nanostores/react'
-import { Link } from 'react-router-dom'
-import { LoginStore, setEmail, setPassword } from '../Store/Login'
+import { Link, Outlet } from 'react-router-dom'
+import {
+  loginOnFirebase,
+  LoginStore,
+  setEmail,
+  setPassword,
+} from '../Store/Login'
 import {
   ButtonContainer,
   CenteredContainer,
@@ -18,6 +23,13 @@ import {
 export default function Login() {
   // On récupére l'état contenue dans le login store
   const state = useStore(LoginStore)
+
+  // Si j'ai un utilisateur dans mon état, alors pas besoin
+  // d'afficher la page de login, mais plutôt le contenue
+  // de la route c'est à dire : Outlet
+  if (state.user) {
+    return <Outlet />
+  }
 
   return (
     <CenteredContainer>
@@ -49,14 +61,14 @@ export default function Login() {
         {state.loading ? (
           <p>Chargement ....</p>
         ) : (
-          <SendButton>Envoyer</SendButton>
+          <SendButton onClick={loginOnFirebase}>Envoyer</SendButton>
         )}
       </ButtonContainer>
 
       <TextContainer>
         Vous n'avez pas de compte ?
         <br />
-        <Link to="/">Inscrivez-vous</Link>
+        <Link to="/inscription">Inscrivez-vous</Link>
       </TextContainer>
     </CenteredContainer>
   )

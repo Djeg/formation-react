@@ -1,4 +1,9 @@
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth'
 import { action, map } from 'nanostores'
+import { auth } from '../Lib/Firebase'
 
 /**
  * Création d'un store contenant l'état de notre composant
@@ -52,7 +57,7 @@ export const setPassword = action(
 export const validateLogin = action(LoginStore, 'validateLogin', store => {
   // Je récupére l'email et le mot de passe contenue dans mon
   // store
-  const { email, password } = store.get()
+  const { password } = store.get()
 
   if (password.length < 6) {
     store.setKey('passwordError', 'Mot de passe trop court')
@@ -60,3 +65,91 @@ export const validateLogin = action(LoginStore, 'validateLogin', store => {
     store.setKey('passwordError', '')
   }
 })
+
+/**
+ * Inscrit un utilisateur sur firebase
+ */
+export const registerOnFirebase = action(
+  LoginStore,
+  'registerOnFirebase',
+  async store => {
+    // On passe l'état loading à true
+    store.setKey('loading', true)
+
+    // On récupére l'email et le mot de passe stocké dans
+    // notre store
+    const { email, password } = store.get()
+
+    // On s'asure de bien avoir un email et un mot de passe
+    if (!email || !password) {
+      // Je remet l'état loading à faux
+      store.setKey('loading', false)
+      // J'arréte l'action
+      return
+    }
+
+    // Je créer un utilisateur sur firebase en utilisant
+    // la fonction createUserWithEmailAndPassword
+    try {
+      const result = await createUserWithEmailAndPassword(auth, email, password)
+
+      // J'enregistre l'utilisateur dans le store firebase
+      store.setKey('user', {
+        id: result.user.uid,
+        email: result.user.email,
+      })
+      // Je remet l'état loading à faux
+      store.setKey('loading', false)
+
+      console.warn(store.get())
+    } catch (e) {
+      // Je remet l'état loading à faux
+      store.setKey('loading', false)
+      // J'arréte l'action
+      return
+    }
+  },
+)
+
+/**
+ * Action permettant de connécter un utilisateur à firebase
+ */
+export const loginOnFirebase = action(
+  LoginStore,
+  'loginOnFirebase',
+  async store => {
+    // On passe l'état loading à true
+    store.setKey('loading', true)
+
+    // On récupére l'email et le mot de passe stocké dans
+    // notre store
+    const { email, password } = store.get()
+
+    // On s'asure de bien avoir un email et un mot de passe
+    if (!email || !password) {
+      // Je remet l'état loading à faux
+      store.setKey('loading', false)
+      // J'arréte l'action
+      return
+    }
+
+    // Je créer un utilisateur sur firebase en utilisant
+    // la fonction createUserWithEmailAndPassword
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password)
+
+      // J'enregistre l'utilisateur dans le store firebase
+      store.setKey('user', {
+        id: result.user.uid,
+        email: result.user.email,
+      })
+      // Je remet l'état loading à faux
+      store.setKey('loading', false)
+    } catch (e) {
+      // Je remet l'état loading à faux
+      store.setKey('loading', false)
+      // J'arréte l'action
+      return
+    }
+  },
+)
