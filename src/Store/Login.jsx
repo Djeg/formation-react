@@ -1,5 +1,6 @@
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
 } from 'firebase/auth'
 import { action, map } from 'nanostores'
@@ -151,5 +152,39 @@ export const loginOnFirebase = action(
       // J'arréte l'action
       return
     }
+  },
+)
+
+/**
+ * Cette action récupére l'utilisateur connécté à firebase. Elle est
+ * lancé lorsque le composant de login s'affiche pour la toute première
+ * fois.
+ *
+ * En effet, firebase stock dans le navigateur notre utilisateur connécté
+ * à l'application. Nous devons le récupérer lorsque le composant de login
+ * s'affiche afin de mettre à jour notre état et de connécté automatiquement
+ * notre utilisateur.
+ */
+export const checkFirebaseLogin = action(
+  LoginStore,
+  'checkFirebaseLogin',
+  store => {
+    store.setKey('loading', true)
+    // On récupére l'utilisateur connécté à l'application si il y en a
+    // un
+    onAuthStateChanged(auth, user => {
+      store.setKey('loading', false)
+      // Si il n'y a pas d'utilisateur firebase
+      if (!user) {
+        // On ne fais rien et on arréte la fonction
+        return null
+      }
+
+      // On enregistre l'utilisateur dans l'état
+      store.setKey('user', {
+        id: user.uid,
+        email: user.email,
+      })
+    })
   },
 )

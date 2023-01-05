@@ -6,12 +6,14 @@ import { getAuth } from 'firebase/auth'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyBQzf5u0_OsfKhXcMLLBQFrDATlLOdtPBc',
-  authDomain: 'todo-app-950dc.firebaseapp.com',
-  projectId: 'todo-app-950dc',
-  storageBucket: 'todo-app-950dc.appspot.com',
-  messagingSenderId: '545933194404',
-  appId: '1:545933194404:web:1b75b760b02a8aafd3a231',
+  apiKey: 'AIzaSyDpoX9GrV6RzQTVrLRoSksoDJVIQumUoT4',
+  authDomain: 'cookthat-8cd9b.firebaseapp.com',
+  databaseURL:
+    'https://cookthat-8cd9b-default-rtdb.europe-west1.firebasedatabase.app',
+  projectId: 'cookthat-8cd9b',
+  storageBucket: 'cookthat-8cd9b.appspot.com',
+  messagingSenderId: '263852106888',
+  appId: '1:263852106888:web:7f556f3cea2895cf3e6b3d',
 }
 
 // Initialize Firebase

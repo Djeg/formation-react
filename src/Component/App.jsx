@@ -15,7 +15,7 @@ export default function App() {
       <BrowserRouter>
         {/* On déclare une suite ou collection de routes */}
         <Routes>
-          {/* Route d'inscription (page d'inscription ou écran d'inscription) */}
+          {/* Route de la page de connexion */}
           <Route path="/" element={<Login />}>
             {/* Ces routes enfant, sont nommé les Outlet. Elles sont
             utilisé dans le composant login et affiché unqiuement lorsque nous
@@ -24,7 +24,7 @@ export default function App() {
             <Route path="nouvelle-liste" element={<h1>Nouvelle liste</h1>} />
           </Route>
 
-          {/* Route pour la connexion */}
+          {/* Route pour l'inscription */}
           <Route path="/inscription" element={<Registration />} />
         </Routes>
       </BrowserRouter>

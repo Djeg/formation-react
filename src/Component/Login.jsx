@@ -1,6 +1,8 @@
 import { useStore } from '@nanostores/react'
+import { useEffect } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import {
+  checkFirebaseLogin,
   loginOnFirebase,
   LoginStore,
   setEmail,
@@ -23,6 +25,10 @@ import {
 export default function Login() {
   // On récupére l'état contenue dans le login store
   const state = useStore(LoginStore)
+
+  // On utilise useEffect pour lancer une fonction lorsque le
+  // composant s'affiche la première fois
+  useEffect(checkFirebaseLogin, [])
 
   // Si j'ai un utilisateur dans mon état, alors pas besoin
   // d'afficher la page de login, mais plutôt le contenue
