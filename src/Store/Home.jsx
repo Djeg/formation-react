@@ -25,6 +25,6 @@ export const addTodoList = action(
     }
 
     // On ajoute la liste dans le tableaux plus haut
-    store.setKey('todos', [todoList, ...todoList.get().todos])
+    store.setKey('todos', [todoList, ...store.get().todos])
   },
 )

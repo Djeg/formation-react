@@ -42,7 +42,7 @@ export default function Home() {
               <CardUserIcon className="fa-solid fa-user"></CardUserIcon>
               <CardUserLabelContainer>
                 <CardUserLabel>Par</CardUserLabel>
-                <CardUserLabelUsername>{todo.user.email}</CardUserLabelUsername>
+                <CardUserLabelUsername>{todo.username}</CardUserLabelUsername>
               </CardUserLabelContainer>
             </CardUserContainer>
 
