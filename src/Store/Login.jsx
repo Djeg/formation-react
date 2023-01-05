@@ -169,10 +169,12 @@ export const checkFirebaseLogin = action(
   LoginStore,
   'checkFirebaseLogin',
   store => {
+    // Nous chargons le composant
     store.setKey('loading', true)
     // On récupére l'utilisateur connécté à l'application si il y en a
     // un
     onAuthStateChanged(auth, user => {
+      // Nous arrétons le chargement
       store.setKey('loading', false)
       // Si il n'y a pas d'utilisateur firebase
       if (!user) {

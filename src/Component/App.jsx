@@ -1,6 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { GlobalStyle } from '../Style/Global'
+import Home from './Home'
 import Login from './Login'
+import NewList from './NewList'
 import Registration from './Registration'
 
 /**
@@ -13,6 +16,7 @@ export default function App() {
     <React.StrictMode>
       {/* La navigation sur mon navigateur */}
       <BrowserRouter>
+        <GlobalStyle />
         {/* On déclare une suite ou collection de routes */}
         <Routes>
           {/* Route de la page de connexion */}
@@ -20,8 +24,8 @@ export default function App() {
             {/* Ces routes enfant, sont nommé les Outlet. Elles sont
             utilisé dans le composant login et affiché unqiuement lorsque nous
             sommes connécté */}
-            <Route path="" element={<h1>Accueil</h1>} />
-            <Route path="nouvelle-liste" element={<h1>Nouvelle liste</h1>} />
+            <Route path="" element={<Home />} />
+            <Route path="nouvelle-liste" element={<NewList />} />
           </Route>
 
           {/* Route pour l'inscription */}
