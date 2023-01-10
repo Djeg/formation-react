@@ -106,6 +106,44 @@ const mathProf: ProfPrincipal<string> = {
   prenom: 'Jane'
   matiere: 'Mathematique'
 }
+
+// D'un autre prof mais cette fois en utilisant
+// un numerique pour la matière
+const mathProf2: ProfPrincipal<number> = {
+  nom: 'Dupont'
+  prenom: 'Jane'
+  matiere: 3
+}
+```
+
+## Les « constantes »
+
+Dans certains cas nous voulons pouvoir typer certaines constante, des chaînes de caractère bien spécifique. Par éxemple, la matière d'un prof principal ! Elle ne peut pas être n'importe quoi :
+
+```typescript
+/**
+ * Nous créons un type matière pouvant contenir uniquement
+ * que certaines chaïnes de caractère très présice :
+ **/
+type Matiere =
+  | 'anglais'
+  | 'espagnol'
+  | 'francais'
+  | 'math'
+  | 'physique & chimie'
+  | 'arts plastique'
+  | 'musique'
+  | 'sport'
+
+/**
+ * Maintenant nous pouvons appliquer ce type à notre prof principal
+ * par exemple :
+ */
+type ProfPrinctipal = {
+  nom: string
+  prenom: string
+  matiere: Matiere
+}
 ```
 
 > Les générique sont très très puissants, il vous sont expliqué dans la [documentation de typescript](https://www.typescriptlang.org/docs/handbook/2/generics.html)
@@ -132,6 +170,23 @@ const calc: Calculatrice = {
   additioner: (x, y) => x + y,
   soustraire: (x, y) => x - y,
 }
+```
+
+De la même manière nous pouvons cumuler fonction et générique !
+
+```typescript
+// Création d'une fonction accéptant un générique
+function add<A>(a: A, b: A): A {
+  return a + b
+}
+
+// Maintenant nous pouvons applique cette fonction à un type donné :
+const result1 = add(10, 5) // ici <A> sera number
+const result2 = add('super', 'sympas') // Marche aussi ! Ici <A> sera string
+
+// On peut aussi forcer la converstion des générique, rendant
+//  notre code plus solide :
+const result3 = add<string>(10, 5) // Erreur 10 et 5 ne sont pas des string !
 ```
 
 [**Chapitre précédent : les fonctions**](./fonctions.md)
