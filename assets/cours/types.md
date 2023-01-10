@@ -45,7 +45,7 @@ const btn2: Bouton = ['Coucou', true]
 
 ## Les objets
 
-Il est possible en typescript de typer nos objets. C'est probablement ce que l'on utilise le souvent, car en javascript on manipule énormément d'objet !
+Il est possible en typescript de typer nos objets. C'est probablement ce que l'on utilise le plus souvent, car en javascript on manipule énormément d'objet !
 
 ```typescript
 // Créer un type qui correspond au détail d'un élève :
