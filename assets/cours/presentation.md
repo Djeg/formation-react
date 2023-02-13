@@ -142,7 +142,7 @@ De base, vite créer une petite application react avec quelques exemples de code
 1. Supprimer tout les fichiers non cité plus haut
 2. Placer dans le `main.tsx` le code suivant :
 
-```typescript
+```tsx
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
@@ -154,3 +154,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 ```
 
 > Vous pouvez vous amuser à éditer le contenue de la balise `<h1>`, l'application react se rafraichie automatiquement
+
+### Bonus : Mettre en place un formatter de code
+
+Développer une application react n'est pas une mince affaire ... Il est conseillé de toujours garder un code _propre_ et _bien formatté_. Pour cela nous utilisons un formatter de code automatique : [prettier](https://prettier.io/)
+
+Vous pouvez installer l'extension prettier pour vscode !
+
+Il faut faudra copier/coller le fichier [`.prettierrc`](../../.prettierrc)
