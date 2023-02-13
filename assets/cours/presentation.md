@@ -112,3 +112,45 @@ C'est outil permettant de mieux débugger et utilisé un application React.
 > Créer une application react en utilisant vite nommé "mon-app-test". Installer les dépendances et démarrer le serveur, puis dans votre navigateur activer l'inpécteur et la vue mobile :)
 >
 > N'hésitez pas à installer l'extension react developper tools
+
+## Arborescence d'une application react
+
+Dans une application react, vous retrouverez généralement les fichiers suivant :
+
+- `package.json / package-lock.json` : Votre projet javascript, c'est ce fichier qui contient les dépendances
+- `tsconfig.json / tsconfig.node.json` : Ce sont de fichier de configuration pour typescript
+- `vite.config.ts` : Petit fichier de configuration pour vite
+- `.gitignore` : Permet d'ignore certains dossier et fichier sur git
+- `index.html` : C'est le fichier principal de l'application. Une application web c'est une seule page ! C'est donc le seule fichier HTML du projet !
+
+On retrouve aussi les dossiers suivant :
+
+- `public/` : Contient les fichiers « statiques » (comme des images), qui seront optimisé par vite lors de la mise en production ! Ici nous avons uniquement le logo de l'application
+- `src/` : C'est le dossier de source, il contiendra tout votre code (html, js, ts, css etc ...)
+
+### Arborescence du dossier `src`
+
+De base, vite créer une petite application react avec quelques exemples de code. Parmis ces fichiers, seulement 2 nous sont véritablement nescessaire :
+
+- `main.tsx` : Fichier principal de notre application
+- `vite-env.d.ts` : Fichier de configuration pour vite et typescript
+
+> Durant cette formation nous allons supprimer tout les autres fichiers !
+
+### Mettre en place une base vide
+
+1. Supprimer tout les fichiers non cité plus haut
+2. Placer dans le `main.tsx` le code suivant :
+
+```typescript
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <h1>Hello mon application</h1>
+  </React.StrictMode>,
+)
+```
+
+> Vous pouvez vous amuser à éditer le contenue de la balise `<h1>`, l'application react se rafraichie automatiquement
