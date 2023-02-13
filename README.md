@@ -5,5 +5,7 @@ Bienvenue dans cette formation React. Vous apprendrez à utiliser l'un des outil
 ## Plan du cours
 
 - [Présentation](./assets/cours/presentation.md)
+- [React & JSX / TSX](./assets/cours/jsx.md)
+- [React et les composants](./assets/cours/composants.md)
 
 ## Les exerices
