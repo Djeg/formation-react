@@ -4,4 +4,6 @@ Bienvenue dans cette formation React. Vous apprendrez à utiliser l'un des outil
 
 ## Plan du cours
 
+- [Présentation](./assets/cours/presentation.md)
+
 ## Les exerices
