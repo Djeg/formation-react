@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import ReactDOM from 'react-dom/client'
 
 function Hello() {
@@ -12,8 +12,22 @@ function Hello() {
   )
 }
 
+export type SuperTitreProps = {
+  children: ReactNode
+}
+
+function SuperTitre({ children }: SuperTitreProps) {
+  return (
+    <div>
+      <section>
+        <h1>{children}</h1>
+      </section>
+    </div>
+  )
+}
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <Hello />
+    <SuperTitre>Salut les amis</SuperTitre>
   </React.StrictMode>,
 )
