@@ -12,4 +12,4 @@ Bienvenue dans cette formation React. Vous apprendrez à utiliser l'un des outil
 ## Les exerices
 
 - [typescript : les types](./src/exos/typescript/exo01.tsx)
-- [React et le design](./assets/exos/)
+- [React et le design](./assets/exos/design.md)
