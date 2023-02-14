@@ -290,6 +290,7 @@ Dans cette exemple voici les fichiers que nous devons créer :
 src/
   main.tsx
   components/
+    App.tsx
     DisplayStudent.tsx
   types/
     DisplayStudent.type.tsx
@@ -346,15 +347,36 @@ export default function DisplayStudent({ student }: DisplayStudentProps) {
 #### `src/main.tsx`
 
 ```tsx
-import { StrictModel } from 'react'
+import App from './components/App'
 import ReactDOM from 'react-dom/client'
-import DisplayStudent from './components/DisplayStudent'
 
 const root = document.querySelector('#root') as HTMLElement
 
-ReactDOM.createRoot(root).render(
-  <StrictMode>
-    <DisplayStudent student={...}>
-  </StrictMode>
-)
+ReactDOM.createRoot(root).render(<App />)
+```
+
+#### Le `App.tsx`
+
+Dans toutes les applications il éxiste un composant principal, c'est composant qui affiche **toute l'application**. Ce composant c'est le `App.tsx`.
+
+Il se range dans le dossier `components/` et contient le code de l'application.
+
+Exemple :
+
+#### `src/components/App.tsx`
+
+```tsx
+import { StrictMode } from 'react'
+import DisplayStudent from './DisplayStudent'
+
+/**
+ * Composant principal de l'application
+ */
+export default function App() {
+  return (
+    <StrictMode>
+      <DisplayStudent student={...}>
+    </StrictMode>
+  )
+}
 ```
