@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { Student } from '../types/DisplayStudent.type'
 import DisplayStudent from './DisplayStudent'
+import '../styles/style.css'
 
 /**
  * Composant principal de l'application des étudiants
