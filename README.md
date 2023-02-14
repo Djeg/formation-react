@@ -9,3 +9,5 @@ Bienvenue dans cette formation React. Vous apprendrez à utiliser l'un des outil
 - [React et les composants](./assets/cours/composants.md)
 
 ## Les exerices
+
+- [typescript : les types](./src/exos/typescript/exo01.tsx)
