@@ -1,6 +1,9 @@
 import { StrictMode } from 'react'
 import { AppGlobalStyle } from '../styles/App.style'
 import Design1 from './Design1'
+import Design2 from './Design2'
+import Design3 from './Design3'
+import Design4 from './Design4'
 
 /**
  * Composant principal de l'exercice de design. Il contient
@@ -10,7 +13,7 @@ export default function App() {
   return (
     <StrictMode>
       <AppGlobalStyle />
-      <Design1 />
+      <Design4 />
     </StrictMode>
   )
 }
