@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import App from './exos-design/components/App'
+import App from './exos-spedah/components/App'
 
 // On séléctionne la balise HTML qui contiendra notre
 // application react
