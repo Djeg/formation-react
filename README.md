@@ -8,8 +8,10 @@ Bienvenue dans cette formation React. Vous apprendrez à utiliser l'un des outil
 - [React & JSX / TSX](./assets/cours/jsx.md)
 - [React et les composants](./assets/cours/composants.md)
 - [React et le style](./assets/cours/styles.md)
+- [React : Event et State](./assets/cours/event-state.md)
 
 ## Les exerices
 
 - [typescript : les types](./src/exos/typescript/exo01.tsx)
 - [React et le design](./assets/exos/design.md)
+- [Le compteur](./assets/exos/counter.md)
