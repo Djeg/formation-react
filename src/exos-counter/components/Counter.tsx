@@ -45,7 +45,9 @@ export default function Counter({ children }: CounterProps) {
       <Line>
         <Button onClick={minus}>-</Button>
         <Label>{counter}</Label>
-        <Button onClick={plus}>+</Button>
+        <Button onClick={plus}>
+          <i className="fa-solid fa-square-plus"></i>
+        </Button>
       </Line>
       <Button onClick={reset}>Reset</Button>
       <Line>
