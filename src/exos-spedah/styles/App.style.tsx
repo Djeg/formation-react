@@ -7,7 +7,9 @@ import { createGlobalStyle } from 'styled-components'
 export const AppTheme = {
   colors: {
     white: '#FFF',
-    blue: '#1F5460',
+    blue: 'rgb(31, 84, 96)',
+    transparentBlue: 'rgba(31, 84, 96, .8)',
+    black: '#0c2227',
     yellow: '#FFCA42',
     green: '#A8C0A7',
     lightGreen: '#D5E7D4',
@@ -22,8 +24,8 @@ export const AppGlobalStyle = createGlobalStyle`
   :root {
     font-size: 18px;
     font-family: 'Sora', sans-serif;
-    color: ${AppTheme.colors.white};
-    background-color: ${AppTheme.colors.blue};
+    color: ${AppTheme.colors.black};
+    background-color: ${AppTheme.colors.white};
   }
 
   html, body, #root {

@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import App from './demo-router/components/App'
+import App from './exos-menu/components/App'
 
 // On séléctionne la balise HTML qui contiendra notre
 // application react
