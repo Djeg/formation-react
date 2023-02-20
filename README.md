@@ -10,6 +10,7 @@ Bienvenue dans cette formation React. Vous apprendrez à utiliser l'un des outil
 - [React et le style](./assets/cours/styles.md)
 - [React : Event et State](./assets/cours/event-state.md)
 - [React Router](./assets/cours/router.md)
+- [React et les effets](./assets/cours/effects.md)
 
 ## Les exerices
 
@@ -17,3 +18,4 @@ Bienvenue dans cette formation React. Vous apprendrez à utiliser l'un des outil
 - [React et le design](./assets/exos/design.md)
 - [Le compteur](./assets/exos/counter.md)
 - [Les menu et les pages](./assets/exos/menu.md)
+- [Le chronomètres](./assets/exos/chronometer.md)
