@@ -11,6 +11,8 @@ Bienvenue dans cette formation React. Vous apprendrez à utiliser l'un des outil
 - [React : Event et State](./assets/cours/event-state.md)
 - [React Router](./assets/cours/router.md)
 - [React et les effets](./assets/cours/effects.md)
+- [React et la gestion des états](./assets/cours/state-management.md)
+- [React et Nanostores](./assets/cours/nanostores.md)
 
 ## Les exerices
 
@@ -19,3 +21,4 @@ Bienvenue dans cette formation React. Vous apprendrez à utiliser l'un des outil
 - [Le compteur](./assets/exos/counter.md)
 - [Les menu et les pages](./assets/exos/menu.md)
 - [Le chronomètres](./assets/exos/chronometer.md)
+- [TODO List : L'inscription](./assets/exos/subscription.md)

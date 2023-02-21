@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import App from './exos-chrono/components/App'
+import App from './demo-state-management3/components/App'
 
 // On séléctionne la balise HTML qui contiendra notre
 // application react
