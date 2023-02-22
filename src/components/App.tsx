@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Subscribe from './Subscribe'
 
 /**
  * Main component displaying the entire super todo
@@ -10,7 +11,9 @@ export default function App() {
   return (
     <StrictMode>
       <BrowserRouter>
-        <h1>Super Todo</h1>
+        <Routes>
+          <Route path="/inscription" element={<Subscribe />} />
+        </Routes>
       </BrowserRouter>
     </StrictMode>
   )
