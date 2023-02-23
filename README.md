@@ -13,6 +13,7 @@ Bienvenue dans cette formation React. Vous apprendrez à utiliser l'un des outil
 - [React et les effets](./assets/cours/effects.md)
 - [React et la gestion des états](./assets/cours/state-management.md)
 - [React et Nanostores](./assets/cours/nanostores.md)
+- [React Native](./assets/cours/react-native.md)
 
 ## Les exerices
 
@@ -23,3 +24,4 @@ Bienvenue dans cette formation React. Vous apprendrez à utiliser l'un des outil
 - [Le chronomètres](./assets/exos/chronometer.md)
 - [TODO List : L'inscription](./assets/exos/subscription.md)
 - [Todo List : La liste de chose a faire](./assets/exos/todolist.md)
+- [Todo List : La page d'accueil](./assets/exos/home.md)
