@@ -14,6 +14,7 @@ Bienvenue dans cette formation React. Vous apprendrez à utiliser l'un des outil
 - [React et la gestion des états](./assets/cours/state-management.md)
 - [React et Nanostores](./assets/cours/nanostores.md)
 - [React Native](./assets/cours/react-native.md)
+- [Firebase](./assets/cours/firebase.md)
 
 ## Les exerices
 
