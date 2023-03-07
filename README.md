@@ -6,7 +6,8 @@
 
 1. Cloner le repository
 2. Installer les dépendances NPM : `npm install`
-3. Démarer le serveur : `npm run dev`
+3. Copier / Coller le fichier `.env` en `.env.local` et éditer vos valeurs de configuration
+4. Démarer le serveur : `npm run dev`
 
 ## Qui a-t-il sous le capot ?
 
