@@ -1,10 +1,10 @@
 import { useStore } from '@nanostores/react'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import {
   changeEmail,
   changePassword,
+  connect,
   googleConnect,
-  subscribe,
   UserStore,
 } from '../stores/UserStore'
 import {
@@ -16,28 +16,28 @@ import {
 } from '../styles/Auth.style'
 
 /**
- * Composant affichant l'écran d'inscription
+ * Composant permettant de se connécter à l'application
  */
-export default function Subscription() {
-  // Je récupére l'état
+export default function Connection() {
   const {
     email,
     password,
+    error,
+    isSending,
     isEmailValid,
     isPasswordValid,
-    isSending,
-    error,
     user,
   } = useStore(UserStore)
 
-  // Je redirige sur la page d'accueil si j'ai un utilisateur
+  // Si je suis connécté
   if (user) {
-    return <Navigate to="/"></Navigate>
+    // Je retourne les enfants de la route
+    return <Outlet />
   }
 
   return (
     <AllCenteredScreen>
-      <Title>Inscription</Title>
+      <Title>Connexion</Title>
       <InputGroup>
         <input
           type="email"
@@ -69,16 +69,16 @@ export default function Subscription() {
         <p>Chargement</p>
       ) : (
         <>
-          <GreenButton onClick={subscribe}>Inscription</GreenButton>
+          <GreenButton onClick={connect}>Connection</GreenButton>
           <GreenButton onClick={googleConnect}>
             <i className="fa-brands fa-google"></i>
           </GreenButton>
         </>
       )}
       <CenteredText>
-        Vous avez déja un compte ?
+        Vous n'avez pas de compte ?
         <br />
-        <Link to="/">Connéctez-vous !</Link>
+        <Link to="/inscription">Inscrivez-vous !</Link>
       </CenteredText>
     </AllCenteredScreen>
   )

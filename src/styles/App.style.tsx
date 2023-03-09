@@ -11,6 +11,7 @@ export const Theme = {
     green: '#557859',
     deepBlue: '#264F4A',
     white: '#EFEFEF',
+    red: '#BB8579',
   },
 }
 
@@ -37,5 +38,10 @@ export const GlobalStyle = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+    color: ${Theme.colors.greenOcean};
   }
 `

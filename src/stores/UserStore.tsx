@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  signInWithEmailAndPassword,
   signInWithPopup,
 } from 'firebase/auth'
 import { action, map } from 'nanostores'
@@ -156,3 +157,27 @@ export const googleConnect = action(
     }
   },
 )
+
+/**
+ * Action permettant de se connécter en utilisant firebase
+ */
+export const connect = action(UserStore, 'connect', async store => {
+  const { email, password, isEmailValid, isPasswordValid, isSending } =
+    store.get()
+
+  if (isEmailValid === false || isPasswordValid === false || isSending) {
+    return
+  }
+
+  store.setKey('isSending', true)
+
+  try {
+    const result = await signInWithEmailAndPassword(auth, email, password)
+
+    store.setKey('isSending', false)
+    store.setKey('user', result.user)
+  } catch (e) {
+    store.setKey('isSending', false)
+    store.setKey('error', 'Invalide crédentielle')
+  }
+})
