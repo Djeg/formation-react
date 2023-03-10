@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <Title>Mes Todos</Title>
       {todoLists.map((todoList, index) => (
-        <Link to="/todo-list" key={index}>
+        <Link to={`/todo-liste/${index}`} key={index}>
           {todoList.name}
         </Link>
       ))}
